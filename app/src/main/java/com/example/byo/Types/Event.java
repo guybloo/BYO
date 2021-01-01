@@ -3,7 +3,6 @@
 package com.example.byo.Types;
 
 import com.example.byo.DB.DBItem;
-import com.example.byo.Enums.ByoType;
 
 import java.util.Date;
 import java.util.List;
@@ -17,7 +16,7 @@ public class Event implements DBItem {
     private String activityID;
     private String venueID;
     private List<String> serviceIDs;
-    private Date time;
+    private Date dateTime;
     private String ownerID;
 
 
@@ -25,11 +24,11 @@ public class Event implements DBItem {
         this.numID = System.currentTimeMillis();
     }
 
-    public Event(long numId, String description, String title, Date time, String ownerID, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {
+    public Event(long numId, String description, String title, Date dateTime, String ownerID, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {
         this.numID = numId; // creator's ID + creation time
         this.description = description;
         this.title = title;
-        this.time = time;
+        this.dateTime = dateTime;
         this.ownerID = ownerID;
         this.maxParticipants = maxParticipants; // TODO take from all byos
         this.ticketPrice = ticketPrice; // TODO take from all byos
@@ -41,8 +40,16 @@ public class Event implements DBItem {
     // setters
 
 
-    public void setTime(Date time) {
-        this.time = time;
+    public void setNumID(long numID) {
+        this.numID = numID;
+    }
+
+    public void setOwnerID(String ownerID) {
+        this.ownerID = ownerID;
+    }
+
+    public void setDateTime(Date dateTime) {
+        this.dateTime = dateTime;
     }
 
     public void setDescription(String description) {
@@ -73,11 +80,13 @@ public class Event implements DBItem {
         this.serviceIDs = serviceIDs;
     }
 
+
+
     // getters
 
 
-    public Date getTime() {
-        return time;
+    public Date getDateTime() {
+        return dateTime;
     }
 
     @Override
