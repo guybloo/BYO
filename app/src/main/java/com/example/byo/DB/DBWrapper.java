@@ -1,7 +1,5 @@
 package com.example.byo.DB;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
