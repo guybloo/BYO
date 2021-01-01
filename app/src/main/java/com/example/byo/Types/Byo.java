@@ -4,6 +4,7 @@ import com.example.byo.DB.DBItem;
 import com.example.byo.Enums.ByoType;
 
 public class Byo implements DBItem {
+    public final static String SER_LABEL = "byo";
     private String userID;
     private ByoType type;
     private String description;

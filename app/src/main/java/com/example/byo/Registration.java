@@ -3,6 +3,7 @@ package com.example.byo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -39,14 +40,14 @@ public class Registration extends AppCompatActivity {
     }
 
     private void signInOrRegister(){
+        final Context context = this;
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Sign In!", Toast.LENGTH_LONG).show();
-//                            progressBar.setVisibility(View.GONE);
-//                            returnResult(false);
+                            Navigation.openUserMenu(context);
                         } else {
                             mAuth.createUserWithEmailAndPassword(email, password)
                                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -54,6 +55,7 @@ public class Registration extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<AuthResult> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(getApplicationContext(), "Register!", Toast.LENGTH_LONG).show();
+                                                Navigation.openUserMenu(context);
 
                                             } else {
                                                 Toast.makeText(getApplicationContext(), "Fail!", Toast.LENGTH_LONG).show();

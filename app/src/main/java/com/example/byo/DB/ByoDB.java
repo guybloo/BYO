@@ -22,6 +22,7 @@ public class ByoDB extends DBWrapper {
     public static String OTHER_LINK = "other_link";
     public static String PRICE = "price";
     public static String ID_NUM = "id_num";
+    public static String ADDRESS = "address";
 
     /**
      * constructor
@@ -51,6 +52,7 @@ public class ByoDB extends DBWrapper {
         newItem.put(OTHER_LINK, item.getOtherLink());
         newItem.put(PRICE, item.getPrice());
         newItem.put(ID_NUM, item.getIdNum());
+        newItem.put(ADDRESS, item.getAddress());
 
         db.collection(docName).document(String.valueOf(item.getId())).set(newItem);
     }
@@ -74,6 +76,7 @@ public class ByoDB extends DBWrapper {
         byo.setTitle((String) item.get(TITLE));
         byo.setUserID((String) item.get(USER_ID));
         byo.setType((ByoType) item.get(TYPE));
+        byo.setAddress((String) item.get(ADDRESS));
 
         return byo;
     }
