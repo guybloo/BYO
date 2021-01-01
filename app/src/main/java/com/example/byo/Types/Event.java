@@ -5,22 +5,32 @@ package com.example.byo.Types;
 import com.example.byo.DB.DBItem;
 import com.example.byo.Enums.ByoType;
 
+import java.util.Date;
 import java.util.List;
 
 public class Event implements DBItem {
-    public String eventID;
-    public String description;
-    public String title;
-    public int maxParticipants;
-    public int ticketPrice;
-    public String activityID;
-    public String venueID;
-    public List<String> serviceIDs;
+    private long numID;
+    private String description;
+    private String title;
+    private int maxParticipants;
+    private int ticketPrice;
+    private String activityID;
+    private String venueID;
+    private List<String> serviceIDs;
+    private Date time;
+    private String ownerID;
 
-    public Event(String eventID, String description, String title, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {
-        this.eventID = eventID; // creator's ID + creation time
+
+    public Event(){
+        this.numID = System.currentTimeMillis();
+    }
+
+    public Event(long numId, String description, String title, Date time, String ownerID, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {
+        this.numID = numId; // creator's ID + creation time
         this.description = description;
         this.title = title;
+        this.time = time;
+        this.ownerID = ownerID;
         this.maxParticipants = maxParticipants; // TODO take from all byos
         this.ticketPrice = ticketPrice; // TODO take from all byos
         this.activityID = activityID;
@@ -29,6 +39,11 @@ public class Event implements DBItem {
     }
 
     // setters
+
+
+    public void setTime(Date time) {
+        this.time = time;
+    }
 
     public void setDescription(String description) {
         this.description = description;
@@ -60,9 +75,22 @@ public class Event implements DBItem {
 
     // getters
 
+
+    public Date getTime() {
+        return time;
+    }
+
     @Override
     public String getId() {
-        return eventID;
+        return ownerID + "_" + numID;
+    }
+
+    public String getOwnerID() {
+        return ownerID;
+    }
+
+    public long getNumID() {
+        return numID;
     }
 
     public String getDescription() {

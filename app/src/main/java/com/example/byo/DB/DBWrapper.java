@@ -100,7 +100,6 @@ public class DBWrapper {
                                 items.put(id, parseItem(item));
                             }
                             notifyGetSpecific();
-                            Log.println(Log.INFO, "list size", String.valueOf(items.size()));
                         }
                     }
                 });
@@ -183,7 +182,6 @@ public class DBWrapper {
                                 items.put(String.valueOf(item.get(ID)), parseItem(item));
                             }
                             notifyGetAll();
-                            Log.println(Log.INFO, "list size", String.valueOf(items.size()));
                         }
                     }
                 });

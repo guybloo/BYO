@@ -15,15 +15,13 @@ public class Byo implements DBItem {
     private String otherLink;
     private int price;
     private long idNum;
+    private String address;
+
 
     public Byo(){
         idNum = System.currentTimeMillis();
     };
 
-    public Byo(long idNum){
-
-        this.idNum = idNum;
-    };
     public Byo(String userID, ByoType type, String description, String title, int subType, int maxParticipants, String instagram, String facebook, String otherLink, int price) {
         this.userID = userID;
         this.type = type;
@@ -75,6 +73,18 @@ public class Byo implements DBItem {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public void setIdNum(long idNum) {
+        this.idNum = idNum;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getAddress() {
+        return address;
     }
 
     @Override

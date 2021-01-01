@@ -15,7 +15,7 @@ import java.util.Map;
  * events db class
  */
 public class EventDB extends DBWrapper {
-    public static String EVENT_ID = "user_id";
+    public static String NUM_ID = "num_id";
     public static String DESCRIPTION = "description";
     public static String TITLE = "title";
     public static String MAX_PARTICIPANTS = "max_participants";
@@ -23,6 +23,7 @@ public class EventDB extends DBWrapper {
     public static String ACTIVITY_ID = "activity_id";
     public static String VENUE_ID = "venue_id";
     public static String SERVICE_IDS = "service_ids";
+    public static String OWNER_ID = "owner_id";
 
     /**
      * constructor
@@ -42,7 +43,7 @@ public class EventDB extends DBWrapper {
         Event item = (Event) addItem;
         Map<String, Object> newItem = new HashMap<>();
 
-        newItem.put(ID, item.getId());
+        newItem.put(NUM_ID, item.getNumID());
         newItem.put(DESCRIPTION, item.getDescription());
         newItem.put(TITLE, item.getTitle());
         newItem.put(MAX_PARTICIPANTS, item.getMaxParticipants());
@@ -50,6 +51,7 @@ public class EventDB extends DBWrapper {
         newItem.put(ACTIVITY_ID, item.getActivityID());
         newItem.put(VENUE_ID, item.getVenueID());
         newItem.put(SERVICE_IDS, item.getServiceIDs());
+        newItem.put(OWNER_ID, item.getOwnerID());
 
         db.collection(docName).document(String.valueOf(item.getId())).set(newItem);
     }
@@ -62,7 +64,9 @@ public class EventDB extends DBWrapper {
      */
     @Override
     protected DBItem parseItem(Map<String, Object> item) {
-        Event event = new Event((String) item.get(EVENT_ID),
+        Event event = new Event();
+
+        (String) item.get(EVENT_ID),
                 (String) item.get(DESCRIPTION),
                 (String) item.get(TITLE),
                 (int) item.get(MAX_PARTICIPANTS),

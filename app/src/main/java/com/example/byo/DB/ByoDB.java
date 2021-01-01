@@ -62,7 +62,8 @@ public class ByoDB extends DBWrapper {
      */
     @Override
     protected DBItem parseItem(Map<String, Object> item) {
-        Byo byo =  new Byo((long)item.get(ID_NUM));
+        Byo byo =  new Byo();
+        byo.setIdNum((long)item.get(ID_NUM));
         byo.setDescription((String) item.get(DESCRIPTION));
         byo.setFacebook((String) item.get(FACEBOOK));
         byo.setInstagram((String) item.get(INSTAGRAM));
