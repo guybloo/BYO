@@ -14,7 +14,16 @@ public class Byo implements DBItem {
     private String facebook;
     private String otherLink;
     private int price;
+    private long idNum;
 
+    public Byo(){
+        idNum = System.currentTimeMillis();
+    };
+
+    public Byo(long idNum){
+
+        this.idNum = idNum;
+    };
     public Byo(String userID, ByoType type, String description, String title, int subType, int maxParticipants, String instagram, String facebook, String otherLink, int price) {
         this.userID = userID;
         this.type = type;
@@ -70,7 +79,7 @@ public class Byo implements DBItem {
 
     @Override
     public String getId() {
-        return userID + "_" + System.currentTimeMillis();
+        return userID + "_" + idNum;
     }
 
     public ByoType getType() {
@@ -112,5 +121,9 @@ public class Byo implements DBItem {
 
     public String getOtherLink() {
         return otherLink;
+    }
+
+    public long getIdNum() {
+        return idNum;
     }
 }

@@ -1,13 +1,10 @@
 package com.example.byo.DB;
 
+import com.example.byo.Enums.ByoType;
 import com.example.byo.Types.Byo;
 import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
-
-
-//import static com.example.apoc.types.HelpMethods.ListfromGson;
-
 
 
 /**
@@ -24,6 +21,7 @@ public class ByoDB extends DBWrapper {
     public static String FACEBOOK = "facebook";
     public static String OTHER_LINK = "other_link";
     public static String PRICE = "price";
+    public static String ID_NUM = "id_num";
 
     /**
      * constructor
@@ -52,6 +50,7 @@ public class ByoDB extends DBWrapper {
         newItem.put(FACEBOOK, item.getFacebook());
         newItem.put(OTHER_LINK, item.getOtherLink());
         newItem.put(PRICE, item.getPrice());
+        newItem.put(ID_NUM, item.getIdNum());
 
         db.collection(docName).document(String.valueOf(item.getId())).set(newItem);
     }
@@ -63,17 +62,18 @@ public class ByoDB extends DBWrapper {
      */
     @Override
     protected DBItem parseItem(Map<String, Object> item) {
-        Byo byo =  new Byo((String) item.get(NICK_NAME),
-                (String) item.get(EMAIL),
-                (String) item.get(PHONE),
-                (String) item.get(STATUS),
-                (String) item.get(IMAGE),
-                fromGson((String) item.get(LOCATION),LocationInfo.class),
-                ListFromGson((String) item.get(SKILLS), Skills.class),
-                ListFromGson((String) item.get(FEARS), Fears.class),
-                (Boolean) item.get(IS_GROUPED));
+        Byo byo =  new Byo((long)item.get(ID_NUM));
+        byo.setDescription((String) item.get(DESCRIPTION));
+        byo.setFacebook((String) item.get(FACEBOOK));
+        byo.setInstagram((String) item.get(INSTAGRAM));
+        byo.setMaxParticipants((int) item.get(MAX_PARTICIPANTS));
+        byo.setOtherLink((String) item.get(OTHER_LINK));
+        byo.setSubType((int) item.get(SUB_TYPE));
+        byo.setPrice((int) item.get(PRICE));
+        byo.setTitle((String) item.get(TITLE));
+        byo.setUserID((String) item.get(USER_ID));
+        byo.setType((ByoType) item.get(TYPE));
 
-        user.addItemsList(ListFromGson((String) item.get(ITEMS),ItemCount.class));
-        return user;
+        return byo;
     }
 }

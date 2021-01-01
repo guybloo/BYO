@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "127362883355",
+    "project_id": "byofirebaseproject",
+    "storage_bucket": "byofirebaseproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:127362883355:android:30aa1358793da09fb4fdbe",
+        "android_client_info": {
+          "package_name": "com.example.byo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "127362883355-na00ad3qnvc0p7rrerv208lvp244j1dq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.byo",
+            "certificate_hash": "77a6267103d5210d656c52f8766eb2fe7faca497"
+          }
+        },
+        {
+          "client_id": "127362883355-7tk4is73hoh80u4v87bkh5l98136l6pv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBelmUOwNRHwjKKQa6R7wjRt2uyig7FubA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "127362883355-7tk4is73hoh80u4v87bkh5l98136l6pv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
