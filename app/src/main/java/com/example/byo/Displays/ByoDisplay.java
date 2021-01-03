@@ -25,8 +25,6 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
  * shows user details in group
  */
 public class ByoDisplay extends GenericDisplay {
-    // user is the one who sees this page, other user is another group member to show
-
 
     public ByoDisplay(Byo byo, final Context context) {
         super(byo, context, R.layout.byo_display);
@@ -37,6 +35,7 @@ public class ByoDisplay extends GenericDisplay {
                 Navigation.openCreateByo(context, (Byo) item);
             }
         });
+
     }
 
     @Override
@@ -50,10 +49,13 @@ public class ByoDisplay extends GenericDisplay {
             switch (((Byo) item).getType()){
                 case activity:
                     ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubActivityIcon(Activities.valueOf(((Byo) item).getSubType())));
+                    break;
                 case service:
-                    ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubActivityIcon(Activities.valueOf(((Byo) item).getSubType())));
+                    ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubServicesIcon(Services.valueOf(((Byo) item).getSubType())));
+                    break;
                 case venue:
-                    ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubActivityIcon(Activities.valueOf(((Byo) item).getSubType())));
+                    ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubVenuesIcon(Venues.valueOf(((Byo) item).getSubType())));
+                    break;
 
             }
         }

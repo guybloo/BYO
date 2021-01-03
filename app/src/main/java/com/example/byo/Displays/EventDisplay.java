@@ -22,9 +22,6 @@ import java.util.List;
  */
 public class EventDisplay extends GenericDisplay{
 
-    private List<Byo> items;
-    private LinearLayout layout;
-
     public EventDisplay(Event event, final Context context){
         super(event,context, R.layout.event_display);
     }

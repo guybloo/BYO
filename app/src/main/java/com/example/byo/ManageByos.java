@@ -2,7 +2,9 @@ package com.example.byo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.byo.DB.ByoDB;
@@ -29,7 +31,14 @@ public class ManageByos extends AppCompatActivity {
 
         layout = findViewById(R.id.layout_manage_byos);
         items = new ArrayList<>();
+        final Context context = this;
 
+        findViewById(R.id.btn_add_byo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.openCreateByo(context,null);
+            }
+        });
         loadByos();
     }
 
@@ -60,5 +69,11 @@ public class ManageByos extends AppCompatActivity {
             ByoDisplay display = new ByoDisplay(item, this);
             display.addView(layout);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadByos();
     }
 }
