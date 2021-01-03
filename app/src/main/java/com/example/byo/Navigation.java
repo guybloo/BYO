@@ -31,4 +31,10 @@ public class Navigation {
         context.startActivity(intent);
     }
 
+// public static void openCreateEvent(Context context, Byo byo){
+//        Intent intent = new Intent(context, Creat.class);
+//        intent.putExtra(Byo.SER_LABEL, byo);
+//        context.startActivity(intent);
+//    }
+
 }

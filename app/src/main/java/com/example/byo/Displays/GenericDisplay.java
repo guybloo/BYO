@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.byo.DB.DBItem;
+import com.example.byo.Navigation;
 import com.example.byo.R;
 import com.example.byo.Types.Byo;
 
@@ -31,6 +32,7 @@ public class GenericDisplay {
         this.context = context;
         this.item = item;
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
         view = ((Activity)context).getLayoutInflater().inflate(displayID, null);
 
         updateUI();

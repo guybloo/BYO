@@ -73,7 +73,7 @@ public class ByoDB extends DBWrapper {
         byo.setInstagram((String) item.get(INSTAGRAM));
         byo.setMaxParticipants(Integer.parseInt(item.get(MAX_PARTICIPANTS).toString()));
         byo.setOtherLink((String) item.get(OTHER_LINK));
-        byo.setSubType(Integer.parseInt(item.get(SUB_TYPE).toString()));
+        byo.setSubType(item.get(SUB_TYPE).toString());
         byo.setPrice(Integer.parseInt(item.get(PRICE).toString()));
         byo.setTitle((String) item.get(TITLE));
         byo.setUserID((String) item.get(USER_ID));

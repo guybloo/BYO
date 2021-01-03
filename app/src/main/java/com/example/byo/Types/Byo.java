@@ -13,7 +13,7 @@ public class Byo implements DBItem, Serializable {
     private ByoType type;
     private String description;
     private String title;
-    private int subType;
+    private String subType;
     private int maxParticipants;
     private String instagram;
     private String facebook;
@@ -29,7 +29,7 @@ public class Byo implements DBItem, Serializable {
         idNum = System.currentTimeMillis();
     };
 
-    public Byo(String userID, ByoType type, String description, String title, int subType, int maxParticipants, String instagram, String facebook, String otherLink, int price) {
+    public Byo(String userID, ByoType type, String description, String title, String subType, int maxParticipants, String instagram, String facebook, String otherLink, int price) {
         this.userID = userID;
         this.type = type;
         this.description = description;
@@ -67,7 +67,7 @@ public class Byo implements DBItem, Serializable {
         this.price = price;
     }
 
-    public void setSubType(int subType) {
+    public void setSubType(String subType) {
         this.subType = subType;
     }
 
@@ -112,7 +112,7 @@ public class Byo implements DBItem, Serializable {
         return price;
     }
 
-    public int getSubType() {
+    public String getSubType() {
         return subType;
     }
 
