@@ -71,12 +71,13 @@ public class EventDB extends DBWrapper {
         event.setNumID((long) item.get(NUM_ID));
         event.setDescription((String) item.get(DESCRIPTION));
         event.setTitle((String) item.get(TITLE));
-        event.setMaxParticipants((int) item.get(MAX_PARTICIPANTS));
-        event.setTicketPrice((int) item.get(TICKET_PRICE));
+        event.setMaxParticipants(Integer.parseInt(item.get(MAX_PARTICIPANTS).toString()));
+        event.setTicketPrice(Integer.parseInt(item.get(TICKET_PRICE).toString()));
         event.setActivityID((String) item.get(ACTIVITY_ID));
         event.setVenueID((String) item.get(VENUE_ID));
         event.setServiceIDs((List<String>) item.get(SERVICE_IDS));
         event.setDateTime((Date) item.get(DATE));
+        event.setOwnerID((String)item.get(OWNER_ID));
 
         return event;
     }

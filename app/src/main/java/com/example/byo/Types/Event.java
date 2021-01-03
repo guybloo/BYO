@@ -69,7 +69,7 @@ public class Event implements DBItem {
     }
 
     public void setActivityID(String activityID) {
-        this.title = activityID;
+        this.activityID = activityID;
     }
 
     public void setVenueID(String venueID) {

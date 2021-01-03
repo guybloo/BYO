@@ -2,6 +2,8 @@ package com.example.byo.DB;
 
 import com.example.byo.Enums.ByoType;
 import com.example.byo.Types.Byo;
+import com.google.firestore.v1.PreconditionOrBuilder;
+
 import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
@@ -69,10 +71,10 @@ public class ByoDB extends DBWrapper {
         byo.setDescription((String) item.get(DESCRIPTION));
         byo.setFacebook((String) item.get(FACEBOOK));
         byo.setInstagram((String) item.get(INSTAGRAM));
-        byo.setMaxParticipants((int) item.get(MAX_PARTICIPANTS));
+        byo.setMaxParticipants(Integer.parseInt(item.get(MAX_PARTICIPANTS).toString()));
         byo.setOtherLink((String) item.get(OTHER_LINK));
-        byo.setSubType((int) item.get(SUB_TYPE));
-        byo.setPrice((int) item.get(PRICE));
+        byo.setSubType(Integer.parseInt(item.get(SUB_TYPE).toString()));
+        byo.setPrice(Integer.parseInt(item.get(PRICE).toString()));
         byo.setTitle((String) item.get(TITLE));
         byo.setUserID((String) item.get(USER_ID));
         byo.setType((ByoType) item.get(TYPE));

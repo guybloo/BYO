@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.byo.DB.ByoDB;
 import com.example.byo.DB.EventDB;
 import com.example.byo.Types.Byo;
+import com.example.byo.Types.CurrentUser;
 import com.example.byo.Types.Event;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
