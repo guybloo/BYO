@@ -9,62 +9,83 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="מה יש לך להציע:" />
+
         <EditText
+            android:id="@+id/byo_title_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/byo_title_text"/>
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="בחר קטגוריה:" />
+
         <Spinner
+            android:id="@+id/byo_type_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/byo_type_spinner"/>
+            android:layout_height="wrap_content" />
+
         <Spinner
+            android:id="@+id/byo_subtype_spinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/byo_subtype_spinner"/>
+            android:layout_height="wrap_content" />
+
         <TextView
+            android:id="@+id/byo_venue_address_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="כתובת" />
+
         <EditText
+            android:id="@+id/byo_venue_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:id="@+id/byo_venue_address"/>
+            android:inputType="text" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="מספר משתתפים מקסימלי" />
+
         <SeekBar
+            android:id="@+id/byo_max_part"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/byo_max_part"/>
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="מחיר" />
+
         <SeekBar
+            android:id="@+id/byo_price"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/byo_price"/>
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ספר לנו קצת" />
+            android:text="ספר לנו עוד קצת" />
+
         <EditText
+            android:id="@+id/byo_description_text"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <!-- move button to bottom  -->
+        <Button
+            android:id="@+id/btn_save_byos"
+            android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
-            android:id="@+id/byo_description_text"/>
+            android:text="סיום" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

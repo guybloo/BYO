@@ -24,15 +24,31 @@ public class CreateByo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_byo);
 
-        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+//        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
 
-        String[] typeSpinner = new String[] {"פעילות","מקום","שירות"};
+        String[] typeSpinner = new String[]{"מקום", "פעילות", "שירות"};
         Spinner s = (Spinner) findViewById(R.id.byo_type_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeSpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
 
-        ((Spinner) findViewById(R.id.byo_type_spinner)).setOnItemSelectedListener(new SpinnerActivity());
+        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) { // 0 == venue
+                    ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.VISIBLE);
+                    ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.VISIBLE);
+                } else {
+                    ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+                    ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.VISIBLE);
+            }
+        });
 
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
