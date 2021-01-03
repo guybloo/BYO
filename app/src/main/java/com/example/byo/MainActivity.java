@@ -9,9 +9,11 @@ import android.view.View;
 
 import com.example.byo.DB.ByoDB;
 import com.example.byo.DB.EventDB;
+import com.example.byo.DB.RateDB;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 import com.example.byo.Types.Event;
+import com.example.byo.Types.Rate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -28,5 +30,8 @@ public class MainActivity extends AppCompatActivity {
                 Navigation.openRegistration(context);
             }
         });
+
+        Navigation.openCreateByo(this, new Byo());
     }
+
 }

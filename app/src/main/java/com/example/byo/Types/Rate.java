@@ -1,33 +1,28 @@
 package com.example.byo.Types;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.pm.PackageManager;
-import android.telephony.TelephonyManager;
-
-import androidx.core.app.ActivityCompat;
-
 import com.example.byo.DB.DBItem;
 
-import java.util.Date;
-
 public class Rate implements DBItem {
-    private String phoneNumID;
+    private String phoneID;
     private String ratedID;
     private int stars;
     private String description;
 
-    // constructor
+    // constructors
     public Rate(String phoneNumID, String ratedID, int stars, String description) {
-        this.phoneNumID = phoneNumID;
+        this.phoneID = phoneNumID;
         this.ratedID = ratedID;
         this.stars = stars;
         this.description = description;
     }
 
+    public Rate() {
+
+    }
+
     // setters
-    public void setPhoneNumID(String phoneNumID) {
-        this.phoneNumID = phoneNumID;
+    public void setPhoneID(String phoneNumID) {
+        this.phoneID = phoneNumID;
     }
 
     public void setRatedID(String ratedID) {
@@ -43,8 +38,8 @@ public class Rate implements DBItem {
     }
 
     // getters
-    public String getDateTime() {
-        return phoneNumID;
+    public String getPhoneID() {
+        return phoneID;
     }
 
     public String getRatedID() {
@@ -61,6 +56,6 @@ public class Rate implements DBItem {
 
     @Override
     public String getId() {
-        return phoneNumID + "_" + ratedID;
+        return phoneID + "_" + ratedID;
     }
 }
