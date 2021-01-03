@@ -1,5 +1,7 @@
 package com.example.byo.Types;
 
+import android.location.Geocoder;
+
 import com.example.byo.DB.DBItem;
 import com.example.byo.Enums.ByoType;
 
@@ -17,6 +19,8 @@ public class Byo implements DBItem {
     private int price;
     private long idNum;
     private String address;
+    private double longitude; // TODO insert through geocoder
+    private double latitude;
 
 
     public Byo(){
@@ -34,6 +38,7 @@ public class Byo implements DBItem {
         this.facebook = facebook;
         this.otherLink = otherLink;
         this.price = price;
+
     }
 
     public void setDescription(String description) {
