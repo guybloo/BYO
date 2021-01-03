@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CreateByo"></activity>
+        <activity android:name=".GuestMainPage"></activity>
+        <activity android:name=".CreateByo" />
         <activity android:name=".ManageEvents" />
         <activity android:name=".ManageByos" />
         <activity android:name=".UserMenu" />
