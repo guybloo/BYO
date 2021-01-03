@@ -22,6 +22,11 @@
         android:layout_height="wrap_content"
         android:text="ניהול אירועים"
         android:id="@+id/btn_manage_events"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="התנתקות"
+        android:id="@+id/btn_log_out"/>
 </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
