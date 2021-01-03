@@ -179,6 +179,7 @@ public class CreateByo extends AppCompatActivity {
         ((SeekBar) findViewById(R.id.byo_price)).setProgress(byo.getPrice());
         ((TextView) findViewById(R.id.create_byo_max_text)).setText(String.valueOf(byo.getMaxParticipants()));
         ((TextView) findViewById(R.id.create_byo_price_text)).setText(String.valueOf(byo.getPrice()));
+        ((TextView) findViewById(R.id.byo_venue_address)).setText(String.valueOf(byo.getAddress()));
         typeSpinner.setSelection(Arrays.asList(ByoType.values()).indexOf(byo.getType()));
 
     }
@@ -215,6 +216,7 @@ public class CreateByo extends AppCompatActivity {
         byo.setPrice(((SeekBar) findViewById(R.id.byo_price)).getProgress());
 
         byo.setDescription(((EditText) findViewById(R.id.byo_description_text)).getText().toString());
+        byo.setAddress(((EditText) findViewById(R.id.byo_venue_address)).getText().toString());
 
 
         // TODO - social media
