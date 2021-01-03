@@ -13,6 +13,8 @@ import com.example.byo.R;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.Event;
 
+import net.steamcrafted.materialiconlib.MaterialIconView;
+
 import java.util.List;
 
 /**
@@ -31,5 +33,8 @@ public class EventDisplay extends GenericDisplay{
     public void updateUI() {
         super.updateUI();
         ((TextView)view.findViewById(R.id.event_display_title)).setText(((Event)item).getTitle());
+        ((TextView)view.findViewById(R.id.event_display_date)).setText(((Event)item).getDateTime().toString());
     }
+
+
 }
