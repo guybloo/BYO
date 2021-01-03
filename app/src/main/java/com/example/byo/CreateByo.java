@@ -15,47 +15,79 @@ import android.widget.TextView;
 import com.example.byo.Enums.ByoType;
 import com.example.byo.Types.Byo;
 
+import java.util.ArrayList;
+
 public class CreateByo extends AppCompatActivity {
 
     private Byo byo;
+    Spinner typeSpinner, subTypeSpinner;
+    ArrayList<String> parent_list, venue_list, activity_list, service_list;
+    ArrayAdapter<String> parent_array_adapter, child_array_adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_byo);
 
-//        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+        typeSpinner = (Spinner) findViewById(R.id.byo_type_spinner);
+        subTypeSpinner = (Spinner) findViewById(R.id.byo_subtype_spinner);
 
-        String[] typeSpinner = new String[]{"מקום", "פעילות", "שירות"};
-        Spinner s = (Spinner) findViewById(R.id.byo_type_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeSpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
+        parent_list = new ArrayList<>();
+        parent_list.add("מקום");
+        parent_list.add("פעילות");
+        parent_list.add("שירות");
 
-        s.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        parent_array_adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, parent_list);
+
+        typeSpinner.setAdapter(parent_array_adapter);
+
+        venue_list = new ArrayList<>();
+        venue_list.add("בפנים");
+        venue_list.add("גג");
+        venue_list.add("חצר");
+        venue_list.add("מרפסת");
+
+        activity_list = new ArrayList<>();
+        activity_list.add("מוזיקה");
+        activity_list.add("ספורט");
+        activity_list.add("הרצאה");
+        activity_list.add("סדנה");
+        activity_list.add("הופעה");
+        activity_list.add("תערוכה");
+
+        service_list = new ArrayList<>();
+        service_list.add("קייטרינג");
+        service_list.add("ציוד");
+
+        typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) { // 0 == venue
-                    ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.VISIBLE);
-                    ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.VISIBLE);
-                } else {
-                    ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
-                    ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.GONE);
+                switch (position) {
+                    case 0:
+                        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.VISIBLE);
+                        ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.VISIBLE);
+                        child_array_adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, venue_list);
+                        break;
+                    case 1:
+                        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+                        ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.GONE);
+                        child_array_adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, activity_list);
+                        break;
+                    case 2:
+                        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+                        ((TextView) findViewById(R.id.byo_venue_address_text)).setVisibility(View.GONE);
+                        child_array_adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, service_list);
+                        break;
                 }
+                subTypeSpinner.setAdapter(child_array_adapter);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.VISIBLE);
+
             }
         });
-
-//        switch (position)
-        String[] subTypeSpinner = new String[]{"מקום", "פעילות", "שירות"};
-        Spinner sub = (Spinner) findViewById(R.id.byo_subtype_spinner);
-        ArrayAdapter<String> sub_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeSpinner);
-        sub_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sub.setAdapter(sub_adapter);
 
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
