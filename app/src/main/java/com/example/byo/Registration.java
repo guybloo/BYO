@@ -27,6 +27,9 @@ public class Registration extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            Navigation.openUserMenu(this);
+        }
 
         findViewById(R.id.btn_enter).setOnClickListener(new View.OnClickListener() {
             @Override
