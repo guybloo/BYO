@@ -50,6 +50,13 @@ public class CreateByo extends AppCompatActivity {
             }
         });
 
+//        switch (position)
+        String[] subTypeSpinner = new String[]{"מקום", "פעילות", "שירות"};
+        Spinner sub = (Spinner) findViewById(R.id.byo_subtype_spinner);
+        ArrayAdapter<String> sub_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeSpinner);
+        sub_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sub.setAdapter(sub_adapter);
+
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
             byo = new Byo();
