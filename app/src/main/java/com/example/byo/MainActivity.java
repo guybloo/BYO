@@ -10,10 +10,12 @@ import android.view.View;
 import com.example.byo.DB.ByoDB;
 import com.example.byo.DB.EventDB;
 import com.example.byo.DB.RateDB;
+import com.example.byo.DB.RequestDB;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 import com.example.byo.Types.Event;
 import com.example.byo.Types.Rate;
+import com.example.byo.Types.Request;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -32,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 //                Navigation.openRegistration(context);
 //            }
 //        });
+
+        Byo byo = new Byo();
+        Request request = new Request("eventID", byo, "pending");
+        RequestDB requestDB = new RequestDB();
+        requestDB.updateItem(request);
 
         Navigation.openCreateByo(this, new Byo());
     }
