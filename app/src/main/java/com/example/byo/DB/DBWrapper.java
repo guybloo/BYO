@@ -106,6 +106,26 @@ public class DBWrapper {
 
     }
 
+    public void loadItemsByFieldFromDB(final String field, final String value) {
+        items.clear();
+        db.collection(docName).whereEqualTo(field, value)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> item = document.getData();
+                                DBItem temp = parseItem(item);
+                                items.put(temp.getId(), temp);
+                            }
+                            notifyGetSpecific();
+                        }
+                    }
+                });
+
+    }
+
     /**
      * get already loaded item by id
      *
