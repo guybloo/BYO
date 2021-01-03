@@ -2,7 +2,6 @@ package com.example.byo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +20,7 @@ import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CreateByo extends AppCompatActivity {
 
@@ -39,31 +39,43 @@ public class CreateByo extends AppCompatActivity {
         subTypeSpinner = (Spinner) findViewById(R.id.byo_subtype_spinner);
 
         parent_list = new ArrayList<>();
-        parent_list.add("מקום");
-        parent_list.add("פעילות");
-        parent_list.add("שירות");
+        for (ByoType b : ByoType.values()) {
+            parent_list.add(b.name());
+        }
+//        parent_list.add("מקום");
+//        parent_list.add("פעילות");
+//        parent_list.add("שירות");
 
         parent_array_adapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_item, parent_list);
 
         typeSpinner.setAdapter(parent_array_adapter);
 
         venue_list = new ArrayList<>();
-        venue_list.add("בפנים");
-        venue_list.add("גג");
-        venue_list.add("חצר");
-        venue_list.add("מרפסת");
+        for (Venues v : Venues.values()) {
+            venue_list.add(v.name());
+        }
+//        venue_list.add("בפנים");
+//        venue_list.add("גג");
+//        venue_list.add("חצר");
+//        venue_list.add("מרפסת");
 
         activity_list = new ArrayList<>();
-        activity_list.add("מוזיקה");
-        activity_list.add("ספורט");
-        activity_list.add("הרצאה");
-        activity_list.add("סדנה");
-        activity_list.add("הופעה");
-        activity_list.add("תערוכה");
+//        activity_list.add("מוזיקה");
+//        activity_list.add("ספורט");
+//        activity_list.add("הרצאה");
+//        activity_list.add("סדנה");
+//        activity_list.add("הופעה");
+//        activity_list.add("תערוכה");
+        for (Activities a : Activities.values()) {
+            activity_list.add(a.name());
+        }
 
         service_list = new ArrayList<>();
-        service_list.add("קייטרינג");
-        service_list.add("ציוד");
+        for (Services s : Services.values()) {
+            service_list.add(s.name());
+        }
+//        service_list.add("קייטרינג");
+//        service_list.add("ציוד");
 
         typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -86,6 +98,9 @@ public class CreateByo extends AppCompatActivity {
                         break;
                 }
                 subTypeSpinner.setAdapter(child_array_adapter);
+                if(Arrays.asList(ByoType.values()).indexOf(byo.getType()) == position) {
+                    updateSubType();
+                }
             }
 
             @Override
@@ -98,9 +113,7 @@ public class CreateByo extends AppCompatActivity {
         if (byo == null) {
             byo = new Byo();
             byo.setUserID(CurrentUser.getEmail());
-        }
-        else
-            {
+        } else {
             loadByoDetails();
         }
 
@@ -121,10 +134,10 @@ public class CreateByo extends AppCompatActivity {
             }
         });
 
-        ((SeekBar)findViewById(R.id.byo_price)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        ((SeekBar) findViewById(R.id.byo_price)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ((TextView)findViewById(R.id.create_byo_price_text)).setText(String.valueOf(((SeekBar)findViewById(R.id.byo_price)).getProgress()));
+                ((TextView) findViewById(R.id.create_byo_price_text)).setText(String.valueOf(((SeekBar) findViewById(R.id.byo_price)).getProgress()));
             }
 
             @Override
@@ -138,10 +151,10 @@ public class CreateByo extends AppCompatActivity {
             }
         });
 
-        ((SeekBar)findViewById(R.id.byo_max_part)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        ((SeekBar) findViewById(R.id.byo_max_part)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                ((TextView)findViewById(R.id.create_byo_max_text)).setText(String.valueOf(((SeekBar)findViewById(R.id.byo_max_part)).getProgress()));
+                ((TextView) findViewById(R.id.create_byo_max_text)).setText(String.valueOf(((SeekBar) findViewById(R.id.byo_max_part)).getProgress()));
             }
 
             @Override
@@ -159,26 +172,43 @@ public class CreateByo extends AppCompatActivity {
 //    private void configureUI() {
 //    }
 
-    private void loadByoDetails(){
+    private void loadByoDetails() {
         ((EditText) findViewById(R.id.byo_title_text)).setText(byo.getTitle());
         ((EditText) findViewById(R.id.byo_description_text)).setText(byo.getDescription());
         ((SeekBar) findViewById(R.id.byo_max_part)).setProgress(byo.getMaxParticipants());
         ((SeekBar) findViewById(R.id.byo_price)).setProgress(byo.getPrice());
-        ((TextView)findViewById(R.id.create_byo_max_text)).setText(String.valueOf(byo.getMaxParticipants()));
-        ((TextView)findViewById(R.id.create_byo_price_text)).setText(String.valueOf(byo.getPrice()));
+        ((TextView) findViewById(R.id.create_byo_max_text)).setText(String.valueOf(byo.getMaxParticipants()));
+        ((TextView) findViewById(R.id.create_byo_price_text)).setText(String.valueOf(byo.getPrice()));
+        typeSpinner.setSelection(Arrays.asList(ByoType.values()).indexOf(byo.getType()));
 
     }
 
+    private void updateSubType(){
+        int index = 0;
+        switch (byo.getType()) {
+            case מקום:
+                index = Arrays.asList(Venues.values()).indexOf(Venues.valueOf(byo.getSubType()));
+                break;
+            case פעילות:
+                index = Arrays.asList(Activities.values()).indexOf(Activities.valueOf(byo.getSubType()));
+                break;
+            case שירות:
+                index = Arrays.asList(Services.values()).indexOf(Services.valueOf(byo.getSubType()));
+                break;
+        }
+        subTypeSpinner.setSelection(index);
+    }
 
     private void updateByo() {
         byo.setTitle(((EditText) findViewById(R.id.byo_title_text)).getText().toString());
 
         String typeText = ((Spinner) findViewById(R.id.byo_type_spinner)).getSelectedItem().toString();
-        ByoType type = textToEnum(typeText);
-        byo.setType(type);
+//        ByoType type = textToEnum(typeText);
+        byo.setType(ByoType.valueOf(typeText));
 
         String subTypeText = ((Spinner) findViewById(R.id.byo_subtype_spinner)).getSelectedItem().toString();
-        updateSubType(type, subTypeText);
+//        updateSubType(type, subTypeText);
+        byo.setSubType(subTypeText);
 
         byo.setMaxParticipants(((SeekBar) findViewById(R.id.byo_max_part)).getProgress());
 
@@ -191,69 +221,69 @@ public class CreateByo extends AppCompatActivity {
 
     }
 
-    private ByoType textToEnum(String text) {
-        switch (text) {
-            case "מקום":
-                return ByoType.venue;
-            case "פעילות":
-                return ByoType.activity;
-            case "שירות":
-                return ByoType.service;
-        }
-        return null;
-    }
-
-    private void updateSubType(ByoType type, String subTypeText) {
-        switch (type) {
-            case venue:
-                switch (subTypeText) {
-                    case "בפנים":
-                        byo.setSubType(Venues.indoors.name());
-                        break;
-                    case "גג":
-                        byo.setSubType(Venues.roof.name());
-                        break;
-                    case "חצר":
-                        byo.setSubType(Venues.garden.name());
-                        break;
-                    case "מרפסת":
-                        byo.setSubType(Venues.balcony.name());
-                        break;
-                }
-                break;
-            case service:
-                switch (subTypeText) {
-                    case "קייטרינג":
-                        byo.setSubType(Services.catering.name());
-                        break;
-                    case "ציוד":
-                        byo.setSubType(Services.equipment.name());
-                        break;
-                }
-                break;
-            case activity:
-                switch (subTypeText) {
-                    case "מוזיקה":
-                        byo.setSubType(Activities.musician.name());
-                        break;
-                    case "ספורט":
-                        byo.setSubType(Activities.sport.name());
-                        break;
-                    case "הרצאה":
-                        byo.setSubType(Activities.lecture.name());
-                        break;
-                    case "סדנה":
-                        byo.setSubType(Activities.workshop.name());
-                        break;
-                    case "הופעה":
-                        byo.setSubType(Activities.performance.name());
-                        break;
-                    case "תערוכה":
-                        byo.setSubType(Activities.exhibition.name());
-                        break;
-                }
-                break;
-        }
-    }
+//    private ByoType textToEnum(String text) {
+//        switch (text) {
+//            case "מקום":
+//                return ByoType.מקום;
+//            case "פעילות":
+//                return ByoType.פעילות;
+//            case "שירות":
+//                return ByoType.שירות;
+//        }
+//        return null;
+//    }
+//
+//    private void updateSubType(ByoType type, String subTypeText) {
+//        switch (type) {
+//            case מקום:
+//                switch (subTypeText) {
+//                    case "בפנים":
+//                        byo.setSubType(Venues.בפנים.name());
+//                        break;
+//                    case "גג":
+//                        byo.setSubType(Venues.גג.name());
+//                        break;
+//                    case "חצר":
+//                        byo.setSubType(Venues.גינה.name());
+//                        break;
+//                    case "מרפסת":
+//                        byo.setSubType(Venues.מרפסת.name());
+//                        break;
+//                }
+//                break;
+//            case שירות:
+//                switch (subTypeText) {
+//                    case "קייטרינג":
+//                        byo.setSubType(Services.קייטרינג.name());
+//                        break;
+//                    case "ציוד":
+//                        byo.setSubType(Services.ציוד.name());
+//                        break;
+//                }
+//                break;
+//            case פעילות:
+//                switch (subTypeText) {
+//                    case "מוזיקה":
+//                        byo.setSubType(Activities.מוזיקה.name());
+//                        break;
+//                    case "ספורט":
+//                        byo.setSubType(Activities.ספורט.name());
+//                        break;
+//                    case "הרצאה":
+//                        byo.setSubType(Activities.הרצאה.name());
+//                        break;
+//                    case "סדנה":
+//                        byo.setSubType(Activities.סדנה.name());
+//                        break;
+//                    case "הופעה":
+//                        byo.setSubType(Activities.הופעה.name());
+//                        break;
+//                    case "תערוכה":
+//                        byo.setSubType(Activities.תערוכה.name());
+//                        break;
+//                }
+//                break;
+//        }
+//    }
 }
 

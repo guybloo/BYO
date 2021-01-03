@@ -1,13 +1,8 @@
 package com.example.byo.Displays;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.byo.Enums.Activities;
@@ -47,13 +42,13 @@ public class ByoDisplay extends GenericDisplay {
         }
         if (!((Byo) item).getSubType().equals("")) {
             switch (((Byo) item).getType()){
-                case activity:
+                case פעילות:
                     ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubActivityIcon(Activities.valueOf(((Byo) item).getSubType())));
                     break;
-                case service:
+                case שירות:
                     ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubServicesIcon(Services.valueOf(((Byo) item).getSubType())));
                     break;
-                case venue:
+                case מקום:
                     ((MaterialIconView) view.findViewById(R.id.byo_display_icon_sub)).setIcon(getSubVenuesIcon(Venues.valueOf(((Byo) item).getSubType())));
                     break;
 
@@ -63,11 +58,11 @@ public class ByoDisplay extends GenericDisplay {
 
     private MaterialDrawableBuilder.IconValue getTypeIcon(ByoType type) {
         switch (type) {
-            case activity:
+            case פעילות:
                 return MaterialDrawableBuilder.IconValue.ACCOUNT;
-            case service:
+            case שירות:
                 return MaterialDrawableBuilder.IconValue.BRIEFCASE;
-            case venue:
+            case מקום:
                 return MaterialDrawableBuilder.IconValue.MAP_MARKER;
 
         }
@@ -76,30 +71,30 @@ public class ByoDisplay extends GenericDisplay {
 
     private MaterialDrawableBuilder.IconValue getSubActivityIcon(Activities type) {
         switch (type) {
-            case exhibition:
+            case תערוכה:
                 return MaterialDrawableBuilder.IconValue.PALETTE;
-            case musician:
+            case מוזיקה:
                 return MaterialDrawableBuilder.IconValue.MUSIC;
 
-            case sport:
+            case ספורט:
                 return MaterialDrawableBuilder.IconValue.RUN;
 
-            case lecture:
+            case הרצאה:
                 return MaterialDrawableBuilder.IconValue.VOICE;
 
-            case workshop:
+            case סדנה:
                 return MaterialDrawableBuilder.IconValue.HAMMER;
 
-            case performance:
+            case הופעה:
                 return MaterialDrawableBuilder.IconValue.THEATER;
         }
         return MaterialDrawableBuilder.IconValue.HELP;
     }
     private MaterialDrawableBuilder.IconValue getSubServicesIcon(Services type) {
         switch (type) {
-            case catering:
+            case קייטרינג:
                 return MaterialDrawableBuilder.IconValue.FOOD;
-            case equipment:
+            case ציוד:
                 return MaterialDrawableBuilder.IconValue.ATTACHMENT;
 
         }
@@ -107,15 +102,15 @@ public class ByoDisplay extends GenericDisplay {
     }
     private MaterialDrawableBuilder.IconValue getSubVenuesIcon(Venues type) {
         switch (type) {
-            case indoors:
+            case בפנים:
                 return MaterialDrawableBuilder.IconValue.SOFA;
-            case roof:
+            case גג:
                 return MaterialDrawableBuilder.IconValue.HOME_LOCK;
 
-            case garden:
+            case גינה:
                 return MaterialDrawableBuilder.IconValue.NATURE;
 
-            case balcony:
+            case מרפסת:
                 return MaterialDrawableBuilder.IconValue.HOME;
 
         }
