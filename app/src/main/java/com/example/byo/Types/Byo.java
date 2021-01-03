@@ -5,7 +5,9 @@ import android.location.Geocoder;
 import com.example.byo.DB.DBItem;
 import com.example.byo.Enums.ByoType;
 
-public class Byo implements DBItem {
+import java.io.Serializable;
+
+public class Byo implements DBItem, Serializable {
     public final static String SER_LABEL = "byo";
     private String userID;
     private ByoType type;

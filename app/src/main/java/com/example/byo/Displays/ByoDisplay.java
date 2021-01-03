@@ -21,7 +21,7 @@ public class ByoDisplay extends GenericDisplay {
 
 
     public ByoDisplay(Byo byo, final Context context){
-        super(byo, context);
+        super(byo, context,R.layout.byo_display);
     }
 
     @Override

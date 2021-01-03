@@ -27,11 +27,11 @@ public class GenericDisplay {
     protected AlertDialog dialog;
     protected onDeleteListener listener;
 
-    public GenericDisplay(DBItem item, final Context context){
+    public GenericDisplay(DBItem item, final Context context, int displayID){
         this.context = context;
         this.item = item;
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        view = ((Activity)context).getLayoutInflater().inflate(R.layout.byo_display, null);
+        view = ((Activity)context).getLayoutInflater().inflate(displayID, null);
 
         updateUI();
     }

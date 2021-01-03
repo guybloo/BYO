@@ -24,12 +24,12 @@ public class EventDisplay extends GenericDisplay{
     private LinearLayout layout;
 
     public EventDisplay(Event event, final Context context){
-        super(event,context);
+        super(event,context, R.layout.event_display);
     }
 
     @Override
     public void updateUI() {
         super.updateUI();
-        ((TextView)view.findViewById(R.id.byo_display_title)).setText(((Event)item).getTitle());
+        ((TextView)view.findViewById(R.id.event_display_title)).setText(((Event)item).getTitle());
     }
 }
