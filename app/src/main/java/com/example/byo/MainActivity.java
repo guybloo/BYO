@@ -23,15 +23,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_create_byo);
         final Context context = this;
 
-        findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.openRegistration(context);
-            }
-        });
+        Navigation.openCreateByo(context, null);
+//
+//        findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.openRegistration(context);
+//            }
+//        });
 
         Byo byo = new Byo();
         Request request = new Request("eventID", byo, "pending");
