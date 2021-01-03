@@ -77,7 +77,7 @@ public class ByoDB extends DBWrapper {
         byo.setPrice(Integer.parseInt(item.get(PRICE).toString()));
         byo.setTitle((String) item.get(TITLE));
         byo.setUserID((String) item.get(USER_ID));
-        byo.setType((ByoType) item.get(TYPE));
+        byo.setType(ByoType.valueOf(item.get(TYPE).toString()));
         byo.setAddress((String) item.get(ADDRESS));
 
         return byo;

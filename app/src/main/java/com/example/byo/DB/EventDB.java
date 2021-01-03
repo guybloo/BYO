@@ -54,7 +54,7 @@ public class EventDB extends DBWrapper {
         newItem.put(VENUE_ID, item.getVenueID());
         newItem.put(SERVICE_IDS, item.getServiceIDs());
         newItem.put(OWNER_ID, item.getOwnerID());
-        newItem.put(DATE, item.getDateTime());
+        newItem.put(DATE, item.getDateTime().getTime());
 
         db.collection(docName).document(String.valueOf(item.getId())).set(newItem);
     }
@@ -76,7 +76,7 @@ public class EventDB extends DBWrapper {
         event.setActivityID((String) item.get(ACTIVITY_ID));
         event.setVenueID((String) item.get(VENUE_ID));
         event.setServiceIDs((List<String>) item.get(SERVICE_IDS));
-        event.setDateTime((Date) item.get(DATE));
+        event.setDateTime(new Date((long)item.get(DATE)));
         event.setOwnerID((String)item.get(OWNER_ID));
 
         return event;

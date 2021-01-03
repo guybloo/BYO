@@ -30,13 +30,6 @@ public class ManageEvents extends AppCompatActivity {
         layout = findViewById(R.id.layout_manage_events);
         items = new ArrayList<>();
 
-        Event e = new Event();
-        e.setTitle("אירוע ראשון");
-        Event ee = new Event();
-        ee.setTitle("אירוע שני");
-        items.add(e);
-        items.add(ee);
-
         loadEvents();
     }
 
