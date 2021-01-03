@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -23,17 +24,24 @@ public class CreateByo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_byo);
 
+        ((EditText) findViewById(R.id.byo_venue_address)).setVisibility(View.GONE);
+
+        String[] typeSpinner = new String[] {"פעילות","מקום","שירות"};
+        Spinner s = (Spinner) findViewById(R.id.byo_type_spinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, typeSpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+
+        ((Spinner) findViewById(R.id.byo_type_spinner)).setOnItemSelectedListener(new SpinnerActivity());
+
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
             byo = new Byo();
         }
     }
 
-    private void configureUI() {
-
-        ((Spinner) findViewById(R.id.byo_type_spinner)).setOnItemClickListener(this);
-
-    }
+//    private void configureUI() {
+//    }
 
 
     private void updateByo() {
@@ -66,6 +74,7 @@ public class CreateByo extends AppCompatActivity {
             case "שירות":
                 return ByoType.service;
         }
+        return null;
     }
 
     private void updateSubType(ByoType type, String subTypeText) {
