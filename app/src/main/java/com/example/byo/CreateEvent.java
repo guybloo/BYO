@@ -6,10 +6,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.byo.DB.ByoDB;
+import com.example.byo.DB.DBItem;
+import com.example.byo.DB.DBWrapper;
 import com.example.byo.DB.EventDB;
+import com.example.byo.Displays.ByoDisplay;
+import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 import com.example.byo.Types.Event;
 import com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker;
@@ -17,11 +22,16 @@ import com.github.florent37.singledateandtimepicker.dialog.SingleDateAndTimePick
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class CreateEvent extends AppCompatActivity {
 
     private Event event;
     private Date tempDate;
+    private List<Byo> items;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,12 +39,12 @@ public class CreateEvent extends AppCompatActivity {
 
         final Context context = this;
 
-        event = (Event)getIntent().getSerializableExtra(Event.SER_LABEL);
-        if(event == null){
+        items = new ArrayList<>();
+        event = (Event) getIntent().getSerializableExtra(Event.SER_LABEL);
+        if (event == null) {
             event = new Event();
             event.setOwnerID(CurrentUser.getEmail());
-        }
-        else{
+        } else {
             loadEvent();
             tempDate = event.getDateTime();
         }
@@ -76,7 +86,7 @@ public class CreateEvent extends AppCompatActivity {
                             @Override
                             public void onDateSelected(java.util.Date date) {
                                 tempDate = new Date(date.getTime());
-                                ((TextView)findViewById(R.id.create_event_date)).setText(formatDate(tempDate));
+                                ((TextView) findViewById(R.id.create_event_date)).setText(formatDate(tempDate));
                             }
 
                         }).display();
@@ -86,25 +96,53 @@ public class CreateEvent extends AppCompatActivity {
         findViewById(R.id.create_event_add_byo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.openByoChoose(context);
+                Navigation.openByoChoose(context, event);
             }
         });
     }
 
-    public static String formatDate(Date date){
+    public static String formatDate(Date date) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         return formatter.format(date);
     }
 
-    private void updateEvent(){
-        event.setTitle(((TextView)findViewById(R.id.create_event_title_text)).getText().toString());
+    private void updateEvent() {
+        event.setTitle(((TextView) findViewById(R.id.create_event_title_text)).getText().toString());
         event.setDateTime(tempDate);
-        event.setDescription(((TextView)findViewById(R.id.create_event_description_text)).getText().toString());
+        event.setDescription(((TextView) findViewById(R.id.create_event_description_text)).getText().toString());
     }
 
-    private void loadEvent(){
-        ((EditText)findViewById(R.id.create_event_title_text)).setText(event.getTitle());
-        ((TextView)findViewById(R.id.create_event_date)).setText(formatDate( event.getDateTime()));
-        ((EditText)findViewById(R.id.create_event_description_text)).setText(event.getDescription());
+    private void loadEvent() {
+        ((EditText) findViewById(R.id.create_event_title_text)).setText(event.getTitle());
+        ((TextView) findViewById(R.id.create_event_date)).setText(formatDate(event.getDateTime()));
+        ((EditText) findViewById(R.id.create_event_description_text)).setText(event.getDescription());
+        final ByoDB byoDB = new ByoDB();
+        final Context context = this;
+        final LinearLayout layout = findViewById(R.id.create_event_byo_list);
+        if (event.getServiceIDs().size() > 0) {
+            byoDB.loadItemsByListFieldFromDB(DBWrapper.ID, event.getServiceIDs());
+            byoDB.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
+                @Override
+                public void onGetAll() {
+
+                }
+
+                @Override
+                public void onGetSpecific() {
+                    for (DBItem item : byoDB.getItems().values()) {
+                        items.add((Byo) item);
+                        ByoDisplay display = new ByoDisplay((Byo) item, context, false);
+                        display.addView(layout);
+                    }
+                }
+            });
+        }
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        loadEvent();
     }
 }

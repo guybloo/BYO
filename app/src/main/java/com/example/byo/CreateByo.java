@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class CreateByo extends AppCompatActivity {
-
+    public static final String EDIT = "edit";
     private Byo byo;
     private Spinner typeSpinner, subTypeSpinner;
     private ArrayList<String> parent_list, venue_list, activity_list, service_list;
@@ -153,7 +153,9 @@ public class CreateByo extends AppCompatActivity {
             }
         });
 
-        hideEdit();
+        if(!getIntent().getBooleanExtra(CreateByo.EDIT, true)) {
+            hideEdit();
+        }
     }
 
 
@@ -208,11 +210,6 @@ public class CreateByo extends AppCompatActivity {
 
     private void hideEdit()
     {
-        if(CurrentUser.getEmail().equals(byo.getUserID()))
-        {
-            return;
-        }
-
         ((EditText)findViewById(R.id.byo_description_text)).setEnabled(false);
         findViewById(R.id.byo_title_text).setEnabled(false);
         findViewById(R.id.creat_byo_btns).setVisibility(View.GONE);

@@ -7,9 +7,9 @@
     tools:context=".CreateEvent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@id/create_event_btns"
+        android:id="@+id/create_event_details"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
@@ -62,13 +62,15 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/create_event_byo_list"/>
     </LinearLayout>
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/create_event_details"
+        app:layout_constraintBottom_toTopOf="@id/create_event_btns"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
+        android:id="@+id/create_event_byo_list"/>
     <LinearLayout android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
