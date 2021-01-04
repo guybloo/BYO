@@ -80,6 +80,7 @@
 
         <SeekBar
             android:id="@+id/byo_max_part"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Space
@@ -105,6 +106,7 @@
 
         <SeekBar
             android:id="@+id/byo_price"
+            style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <Space

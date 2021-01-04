@@ -91,6 +91,10 @@ public class Byo implements DBItem, Serializable {
         this.address = address;
     }
 
+    public void setLatitude(double latitude) { this.latitude = latitude; }
+
+    public void setLongitude(double longitude) { this.longitude = longitude; }
+
     public String getAddress() {
         return address;
     }

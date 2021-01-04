@@ -25,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Context context = this;
 
-        findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.openRegistration(context);
-            }
-        });
+        Navigation.openCreateByo(context, null);
+
+//        findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.openRegistration(context);
+//            }
+//        });
     }
 }
