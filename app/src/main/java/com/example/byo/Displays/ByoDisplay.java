@@ -3,6 +3,7 @@ package com.example.byo.Displays;
 import android.content.Context;
 import android.view.View;
 
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.byo.Enums.Activities;
@@ -21,8 +22,8 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
  */
 public class ByoDisplay extends GenericDisplay {
 
-    public ByoDisplay(Byo byo, final Context context, final boolean edit) {
-        super(byo, context, R.layout.byo_display);
+    public ByoDisplay(Byo byo, final Context context, final boolean edit, LinearLayout layout) {
+        super(byo, context, R.layout.byo_display, layout);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

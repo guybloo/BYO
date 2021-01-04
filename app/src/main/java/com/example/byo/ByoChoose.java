@@ -140,7 +140,7 @@ public class ByoChoose extends AppCompatActivity {
     private void updateByos() {
         layout.removeAllViews();
         for (final Byo item : myItems) {
-            ByoDisplay display = new ByoDisplay(item, this, false);
+            ByoDisplay display = new ByoDisplay(item, this, false, layout);
             display.addView(layout);
             display.getView().setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -152,7 +152,7 @@ public class ByoChoose extends AppCompatActivity {
             });
         }
         for (final Byo item : items) {
-            ByoDisplay display = new ByoDisplay(item, this, false);
+            ByoDisplay display = new ByoDisplay(item, this, false, layout);
             display.addView(layout);
             display.getView().setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

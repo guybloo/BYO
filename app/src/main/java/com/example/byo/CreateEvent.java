@@ -119,6 +119,7 @@ public class CreateEvent extends AppCompatActivity {
         final ByoDB byoDB = new ByoDB();
         final Context context = this;
         final LinearLayout layout = findViewById(R.id.create_event_byo_list);
+
         if (event.getServiceIDs().size() > 0) {
             byoDB.loadItemsByListFieldFromDB(DBWrapper.ID, event.getServiceIDs());
             byoDB.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
@@ -131,7 +132,7 @@ public class CreateEvent extends AppCompatActivity {
                 public void onGetSpecific() {
                     for (DBItem item : byoDB.getItems().values()) {
                         items.add((Byo) item);
-                        ByoDisplay display = new ByoDisplay((Byo) item, context, false);
+                        ByoDisplay display = new ByoDisplay((Byo) item, context, false, layout);
                         display.addView(layout);
                     }
                 }

@@ -24,8 +24,8 @@ import java.util.List;
  */
 public class EventDisplay extends GenericDisplay{
 
-    public EventDisplay(Event event, final Context context){
-        super(event,context, R.layout.event_display);
+    public EventDisplay(Event event, final Context context, LinearLayout layout){
+        super(event,context, R.layout.event_display, layout);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,7 +67,7 @@ public class ManageEvents extends AppCompatActivity {
         layout.removeAllViews();
 
         for (Event item : items) {
-            EventDisplay display = new EventDisplay(item, this);
+            EventDisplay display = new EventDisplay(item, this, layout);
             display.addView(layout);
         }
     }

@@ -38,5 +38,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'net.steamcrafted:materialiconlib:1.1.5'
     implementation 'com.github.florent37:singledateandtimepicker:2.2.7'
+    implementation "androidx.cardview:cardview:1.0.0"
 
 }

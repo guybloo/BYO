@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:text="ניהול משאבים"
+        android:text="ניהול ברינגים"
         android:id="@+id/btn_manage_byos"/>
     <Button
         android:layout_width="match_parent"
@@ -23,6 +23,7 @@
         android:text="ניהול אירועים"
         android:id="@+id/btn_manage_events"/>
     <Button
+        android:backgroundTint="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="התנתקות"

@@ -28,13 +28,14 @@ public class GenericDisplay {
     protected AlertDialog dialog;
     protected onDeleteListener listener;
 
-    public GenericDisplay(DBItem item, final Context context, int displayID){
+    public GenericDisplay(DBItem item, final Context context, int displayID, LinearLayout layout){
         this.context = context;
         this.item = item;
+//        parent = layout;
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        view = ((Activity)context).getLayoutInflater().inflate(displayID, null);
-
+        view = ((Activity)context).getLayoutInflater().inflate(displayID, layout,false);
+        setParams(0,20);
         updateUI();
     }
 
@@ -79,10 +80,10 @@ public class GenericDisplay {
 //     * @param left from left
 //     * @param top from top
 //     */
-//    public void setParams(int left, int top) {
-//        this.params.leftMargin = left;
-//        this.params.topMargin = top;
-//    }
+    public void setParams(int left, int top) {
+        this.params.leftMargin = left;
+        this.params.topMargin = top;
+    }
 
     /**
      * gets the layout params
@@ -99,6 +100,7 @@ public class GenericDisplay {
     public void addView(LinearLayout layout){
         if(parent == null) {
             parent = layout;
+            params.width = parent.getLayoutParams().width;
             parent.addView(view, params);
         }
     }

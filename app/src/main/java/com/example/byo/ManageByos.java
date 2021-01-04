@@ -66,7 +66,7 @@ public class ManageByos extends AppCompatActivity {
         layout.removeAllViews();
 
         for (Byo item : items) {
-            ByoDisplay display = new ByoDisplay(item, this, true);
+            ByoDisplay display = new ByoDisplay(item, this, true, layout);
             display.addView(layout);
         }
     }

@@ -63,14 +63,19 @@
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
     </LinearLayout>
-    <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintTop_toBottomOf="@id/create_event_details"
-        app:layout_constraintBottom_toTopOf="@id/create_event_btns"
+        app:layout_constraintBottom_toTopOf="@id/create_event_btns">
+    <LinearLayout
+
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:scrollbars="vertical"
         android:id="@+id/create_event_byo_list"/>
+    </ScrollView>
     <LinearLayout android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
@@ -80,11 +85,13 @@
             android:id="@+id/btn_save_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="שמור" />
+            android:text="שמירה" />
         <Button
+            android:backgroundTint="@color/colorPrimaryDark"
             android:id="@+id/btn_delete_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="מחק" />
+            android:text="מחיקה" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,6 +27,7 @@ public class Event implements DBItem, Serializable {
     public Event(){
         this.numID = System.currentTimeMillis();
         this.serviceIDs = new ArrayList<>();
+        dateTime = new Date(System.currentTimeMillis());
     }
 
     public Event(long numId, String description, String title, Date dateTime, String ownerID, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {

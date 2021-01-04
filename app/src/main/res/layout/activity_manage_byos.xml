@@ -5,19 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ManageByos">
-
-   <LinearLayout
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintBottom_toTopOf="@id/btn_add_byo"
+    app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="0dp"
-       app:layout_constraintTop_toTopOf="parent"
        android:id="@+id/layout_manage_byos"
-       app:layout_constraintBottom_toTopOf="@id/btn_add_byo"
        android:orientation="vertical"/>
+</ScrollView>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="+"
+        android:text="הוספת ברינג"
         android:id="@+id/btn_add_byo"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
