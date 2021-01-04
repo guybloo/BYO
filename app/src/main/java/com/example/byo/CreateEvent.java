@@ -82,6 +82,13 @@ public class CreateEvent extends AppCompatActivity {
                         }).display();
             }
         });
+
+        findViewById(R.id.create_event_add_byo).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.openByoChoose(context);
+            }
+        });
     }
 
     public static String formatDate(Date date){

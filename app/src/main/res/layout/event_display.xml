@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/event_display_date" />
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 
 </LinearLayout>

@@ -24,6 +24,12 @@
         app:layout_constraintTop_toBottomOf="@id/byo_display_title"
         android:id="@+id/byo_display_icon_sub"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/byo_display_email"/>
 
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
 </LinearLayout>

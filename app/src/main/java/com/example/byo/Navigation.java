@@ -37,4 +37,9 @@ public class Navigation {
         intent.putExtra(Event.SER_LABEL, event);
         context.startActivity(intent);
     }
+
+    public static void openByoChoose(Context context){
+        Intent intent = new Intent(context, ByoChoose.class);
+        context.startActivity(intent);
+    }
 }

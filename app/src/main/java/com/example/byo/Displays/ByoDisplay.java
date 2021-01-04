@@ -37,6 +37,7 @@ public class ByoDisplay extends GenericDisplay {
     public void updateUI() {
         super.updateUI();
         ((TextView) view.findViewById(R.id.byo_display_title)).setText(((Byo) item).getTitle());
+        ((TextView) view.findViewById(R.id.byo_display_email)).setText(((Byo) item).getUserID());
         if (((Byo) item).getType() != null) {
             ((MaterialIconView) view.findViewById(R.id.byo_display_icon)).setIcon(getTypeIcon(((Byo) item).getType()));
         }

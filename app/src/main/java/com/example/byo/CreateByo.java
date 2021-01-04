@@ -25,9 +25,9 @@ import java.util.Arrays;
 public class CreateByo extends AppCompatActivity {
 
     private Byo byo;
-    Spinner typeSpinner, subTypeSpinner;
-    ArrayList<String> parent_list, venue_list, activity_list, service_list;
-    ArrayAdapter<String> parent_array_adapter, child_array_adapter;
+    private Spinner typeSpinner, subTypeSpinner;
+    private ArrayList<String> parent_list, venue_list, activity_list, service_list;
+    private ArrayAdapter<String> parent_array_adapter, child_array_adapter;
 
 
     @Override
@@ -152,6 +152,8 @@ public class CreateByo extends AppCompatActivity {
 
             }
         });
+
+        hideEdit();
     }
 
 
@@ -202,6 +204,28 @@ public class CreateByo extends AppCompatActivity {
 
         // TODO - social media
 
+    }
+
+    private void hideEdit()
+    {
+        if(CurrentUser.getEmail().equals(byo.getUserID()))
+        {
+            return;
+        }
+
+        ((EditText)findViewById(R.id.byo_description_text)).setEnabled(false);
+        findViewById(R.id.byo_title_text).setEnabled(false);
+        findViewById(R.id.creat_byo_btns).setVisibility(View.GONE);
+        findViewById(R.id.byo_type_spinner).setEnabled(false);
+        findViewById(R.id.byo_subtype_spinner).setEnabled(false);
+        findViewById(R.id.byo_price).setVisibility(View.GONE);
+        findViewById(R.id.byo_max_part).setVisibility(View.GONE);
+        ((EditText)findViewById(R.id.byo_venue_address)).setEnabled(false);
+        if(!((Spinner)findViewById(R.id.byo_type_spinner)).getSelectedItem().toString().equals(ByoType.מקום.name()))
+        {
+            findViewById(R.id.byo_venue_address).setVisibility(View.GONE);
+
+        }
     }
 
 }
