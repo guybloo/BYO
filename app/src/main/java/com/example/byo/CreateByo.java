@@ -2,6 +2,9 @@ package com.example.byo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,12 +16,14 @@ import android.widget.TextView;
 
 import com.example.byo.DB.ByoDB;
 import com.example.byo.Enums.Activities;
+import com.example.byo.DB.ByoDB;
 import com.example.byo.Enums.ByoType;
 import com.example.byo.Enums.Services;
 import com.example.byo.Enums.Venues;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -83,7 +88,7 @@ public class CreateByo extends AppCompatActivity {
                         break;
                 }
                 subTypeSpinner.setAdapter(child_array_adapter);
-                if(Arrays.asList(ByoType.values()).indexOf(byo.getType()) == position) {
+                if (Arrays.asList(ByoType.values()).indexOf(byo.getType()) == position) {
                     updateSubType();
                 }
             }
@@ -97,7 +102,8 @@ public class CreateByo extends AppCompatActivity {
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
             byo = new Byo();
-            byo.setUserID(CurrentUser.getEmail());
+            //TODO uncomment
+//            byo.setUserID(CurrentUser.getEmail());
         } else {
             loadByoDetails();
         }
@@ -105,7 +111,11 @@ public class CreateByo extends AppCompatActivity {
         findViewById(R.id.btn_save_byos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateByo();
+                try {
+                    updateByo();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 (new ByoDB()).updateItem(byo);
                 finish();
             }
@@ -171,7 +181,7 @@ public class CreateByo extends AppCompatActivity {
 
     }
 
-    private void updateSubType(){
+    private void updateSubType() {
         int index = 0;
         switch (byo.getType()) {
             case מקום:
@@ -187,7 +197,7 @@ public class CreateByo extends AppCompatActivity {
         subTypeSpinner.setSelection(index);
     }
 
-    private void updateByo() {
+    private void updateByo() throws IOException {
         byo.setTitle(((EditText) findViewById(R.id.byo_title_text)).getText().toString());
 
         String typeText = ((Spinner) findViewById(R.id.byo_type_spinner)).getSelectedItem().toString();
@@ -196,12 +206,20 @@ public class CreateByo extends AppCompatActivity {
         String subTypeText = ((Spinner) findViewById(R.id.byo_subtype_spinner)).getSelectedItem().toString();
         byo.setSubType(subTypeText);
 
+        if (byo.getType() == ByoType.מקום) {
+            byo.setAddress(((EditText) findViewById(R.id.byo_venue_address)).getText().toString());
+
+            Geocoder g = new Geocoder(this);
+            Address a = g.getFromLocationName(byo.getAddress(), 1).get(0);
+            byo.setLongitude(a.getLongitude());
+            byo.setLatitude(a.getLatitude());
+        }
+
         byo.setMaxParticipants(((SeekBar) findViewById(R.id.byo_max_part)).getProgress());
 
         byo.setPrice(((SeekBar) findViewById(R.id.byo_price)).getProgress());
 
         byo.setDescription(((EditText) findViewById(R.id.byo_description_text)).getText().toString());
-        byo.setAddress(((EditText) findViewById(R.id.byo_venue_address)).getText().toString());
 
 
         // TODO - social media
