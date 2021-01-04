@@ -4,10 +4,13 @@ package com.example.byo.Types;
 
 import com.example.byo.DB.DBItem;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
-public class Event implements DBItem {
+public class Event implements DBItem, Serializable {
+    public final static String SER_LABEL = "event";
+
     private long numID;
     private String description;
     private String title;

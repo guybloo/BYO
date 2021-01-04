@@ -2,7 +2,9 @@ package com.example.byo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.byo.DB.DBItem;
@@ -29,12 +31,19 @@ public class ManageEvents extends AppCompatActivity {
 
         layout = findViewById(R.id.layout_manage_events);
         items = new ArrayList<>();
+        final Context context = this;
 
         loadEvents();
+
+        findViewById(R.id.btn_add_event).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.openCreateEvent(context, new Event());
+            }
+        });
     }
 
-    private void loadEvents()
-    {
+    private void loadEvents() {
         final EventDB db = new EventDB();
         db.loadItemsByFieldFromDB(EventDB.OWNER_ID, CurrentUser.getEmail());
         db.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
@@ -46,20 +55,26 @@ public class ManageEvents extends AppCompatActivity {
             @Override
             public void onGetSpecific() {
                 items.clear();
-                for(DBItem event : db.getItems().values()){
-                    items.add((Event)event);
+                for (DBItem event : db.getItems().values()) {
+                    items.add((Event) event);
                 }
                 updateEvents();
             }
         });
     }
 
-    private void updateEvents(){
+    private void updateEvents() {
         layout.removeAllViews();
 
-        for(Event item : items){
+        for (Event item : items) {
             EventDisplay display = new EventDisplay(item, this);
             display.addView(layout);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadEvents();
     }
 }

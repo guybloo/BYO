@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.byo.Types.Byo;
+import com.example.byo.Types.Event;
 
 public class Navigation {
     public static void openRegistration(Context context){
@@ -31,10 +32,9 @@ public class Navigation {
         context.startActivity(intent);
     }
 
-// public static void openCreateEvent(Context context, Byo byo){
-//        Intent intent = new Intent(context, Creat.class);
-//        intent.putExtra(Byo.SER_LABEL, byo);
-//        context.startActivity(intent);
-//    }
-
+ public static void openCreateEvent(Context context, Event event){
+        Intent intent = new Intent(context, CreateEvent.class);
+        intent.putExtra(Event.SER_LABEL, event);
+        context.startActivity(intent);
+    }
 }
