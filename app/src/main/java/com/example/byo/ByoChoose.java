@@ -2,6 +2,9 @@ package com.example.byo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +17,8 @@ import android.widget.TextView;
 import com.example.byo.DB.ByoDB;
 import com.example.byo.DB.DBItem;
 import com.example.byo.DB.DBWrapper;
+import com.example.byo.DB.EventDB;
+import com.example.byo.DB.RequestDB;
 import com.example.byo.Displays.ByoDisplay;
 import com.example.byo.Enums.Activities;
 import com.example.byo.Enums.ByoType;
@@ -21,12 +26,17 @@ import com.example.byo.Enums.Services;
 import com.example.byo.Enums.Venues;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
+import com.example.byo.Types.Event;
+import com.example.byo.Types.Request;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class ByoChoose extends AppCompatActivity {
+    public static final String EVENT = "event";
     private Spinner typeSpinner, subTypeSpinner;
     private ArrayList<String> parent_list, venue_list, activity_list, service_list;
     private ArrayAdapter<String> parent_array_adapter, child_array_adapter;
@@ -34,11 +44,15 @@ public class ByoChoose extends AppCompatActivity {
     private List<Byo> items;
     private ByoDB db;
     private LinearLayout layout;
+    private Context context;
+    private Event event;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_byo_choose);
 
+        context = this;
+        event = (Event)getIntent().getSerializableExtra(ByoChoose.EVENT);
         db = new ByoDB();
         items = new ArrayList<>();
         myItems = new ArrayList<>();
@@ -125,13 +139,56 @@ public class ByoChoose extends AppCompatActivity {
 
     private void updateByos() {
         layout.removeAllViews();
-        for (Byo item : myItems) {
-            ByoDisplay display = new ByoDisplay(item, this);
+        for (final Byo item : myItems) {
+            ByoDisplay display = new ByoDisplay(item, this, false);
             display.addView(layout);
+            display.getView().setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    String id = ((TextView)v.findViewById(R.id.byo_display_id)).getText().toString();
+                    addByoDialog(item);
+                    return true;
+                }
+            });
         }
-        for (Byo item : items) {
-            ByoDisplay display = new ByoDisplay(item, this);
+        for (final Byo item : items) {
+            ByoDisplay display = new ByoDisplay(item, this, false);
             display.addView(layout);
+            display.getView().setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    String id = ((TextView)v.findViewById(R.id.byo_display_id)).getText().toString();
+                    addByoDialog(item);
+                    return true;
+                }
+            });
         }
+    }
+
+    private void addByoDialog(final Byo byo){
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Request request = new Request();
+                        request.setEventID(event.getId());
+                        request.setByoID(byo.getId());
+
+                        event.addServiceId(byo.getId());
+                        (new EventDB()).updateItem(event);
+                        (new RequestDB()).updateItem(request);
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage("האם להוסיף את הברינג לאירוע?").setPositiveButton("כן", dialogClickListener)
+                .setNegativeButton("לא", dialogClickListener).show();
     }
 }

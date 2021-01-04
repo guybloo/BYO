@@ -26,9 +26,10 @@ public class Navigation {
         context.startActivity(intent);
     }
 
-    public static void openCreateByo(Context context, Byo byo){
+    public static void openCreateByo(Context context, Byo byo, boolean edit){
         Intent intent = new Intent(context, CreateByo.class);
         intent.putExtra(Byo.SER_LABEL, byo);
+        intent.putExtra(CreateByo.EDIT, edit);
         context.startActivity(intent);
     }
 
@@ -38,8 +39,9 @@ public class Navigation {
         context.startActivity(intent);
     }
 
-    public static void openByoChoose(Context context){
+    public static void openByoChoose(Context context, Event eventId){
         Intent intent = new Intent(context, ByoChoose.class);
+        intent.putExtra(ByoChoose.EVENT, eventId);
         context.startActivity(intent);
     }
 }

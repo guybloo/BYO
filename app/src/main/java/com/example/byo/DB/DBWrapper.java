@@ -9,6 +9,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,7 +19,7 @@ public class DBWrapper {
 
     // db name
     protected String docName;
-    protected static String ID = "id";
+    public static String ID = "id";
     protected FirebaseFirestore db;
 
     //items from db
@@ -106,6 +107,7 @@ public class DBWrapper {
 
     }
 
+
     public void loadItemsByFieldFromDB(final String field, final String value) {
         items.clear();
         db.collection(docName).whereEqualTo(field, value)
@@ -125,6 +127,27 @@ public class DBWrapper {
                 });
 
     }
+
+    public void loadItemsByListFieldFromDB(final String field, final List<String> value) {
+        items.clear();
+        db.collection(docName).whereIn(field, value)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                Map<String, Object> item = document.getData();
+                                DBItem temp = parseItem(item);
+                                items.put(temp.getId(), temp);
+                            }
+                            notifyGetSpecific();
+                        }
+                    }
+                });
+
+    }
+
 
     /**
      * get already loaded item by id

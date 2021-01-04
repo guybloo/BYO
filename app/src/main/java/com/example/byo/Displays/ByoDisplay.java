@@ -21,13 +21,13 @@ import net.steamcrafted.materialiconlib.MaterialIconView;
  */
 public class ByoDisplay extends GenericDisplay {
 
-    public ByoDisplay(Byo byo, final Context context) {
+    public ByoDisplay(Byo byo, final Context context, final boolean edit) {
         super(byo, context, R.layout.byo_display);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.openCreateByo(context, (Byo) item);
+                Navigation.openCreateByo(context, (Byo) item, edit);
             }
         });
 
@@ -38,6 +38,7 @@ public class ByoDisplay extends GenericDisplay {
         super.updateUI();
         ((TextView) view.findViewById(R.id.byo_display_title)).setText(((Byo) item).getTitle());
         ((TextView) view.findViewById(R.id.byo_display_email)).setText(((Byo) item).getUserID());
+        ((TextView) view.findViewById(R.id.byo_display_id)).setText(((Byo) item).getId());
         if (((Byo) item).getType() != null) {
             ((MaterialIconView) view.findViewById(R.id.byo_display_icon)).setIcon(getTypeIcon(((Byo) item).getType()));
         }

@@ -6,6 +6,7 @@ import com.example.byo.DB.DBItem;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Event implements DBItem, Serializable {
@@ -25,6 +26,7 @@ public class Event implements DBItem, Serializable {
 
     public Event(){
         this.numID = System.currentTimeMillis();
+        this.serviceIDs = new ArrayList<>();
     }
 
     public Event(long numId, String description, String title, Date dateTime, String ownerID, int maxParticipants, int ticketPrice, String activityID, String venueID, List<String> serviceIDs) {
@@ -42,6 +44,9 @@ public class Event implements DBItem, Serializable {
 
     // setters
 
+    public void addServiceId(String id){
+        serviceIDs.add(id);
+    }
 
     public void setNumID(long numID) {
         this.numID = numID;

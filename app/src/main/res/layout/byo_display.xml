@@ -28,6 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/byo_display_email"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/byo_display_id"
+        android:visibility="gone"/>
 
     <Space
         android:layout_width="match_parent"

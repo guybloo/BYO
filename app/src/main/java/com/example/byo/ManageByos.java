@@ -36,7 +36,7 @@ public class ManageByos extends AppCompatActivity {
         findViewById(R.id.btn_add_byo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.openCreateByo(context,null);
+                Navigation.openCreateByo(context,null, true);
             }
         });
         loadByos();
@@ -66,7 +66,7 @@ public class ManageByos extends AppCompatActivity {
         layout.removeAllViews();
 
         for (Byo item : items) {
-            ByoDisplay display = new ByoDisplay(item, this);
+            ByoDisplay display = new ByoDisplay(item, this, true);
             display.addView(layout);
         }
     }

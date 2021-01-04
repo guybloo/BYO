@@ -1,5 +1,6 @@
 package com.example.byo.DB;
 
+import com.example.byo.Enums.RequestStatus;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.Rate;
 import com.example.byo.Types.Request;
@@ -8,8 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RequestDB extends DBWrapper{
-    public static String EVENT_ID = "eventID";
-    public static String BYO = "byo";
+    public static String EVENT_ID = "event_id";
+    public static String BYO_ID = "byo_id";
     public static String STATUS = "status";
 
     /**
@@ -31,7 +32,7 @@ public class RequestDB extends DBWrapper{
         Map<String, Object> newItem = new HashMap<>();
 
         newItem.put(EVENT_ID, item.getEventID());
-        newItem.put(BYO, item.getByo());
+        newItem.put(BYO_ID, item.getByoID());
         newItem.put(STATUS, item.getStatus());
 
         db.collection(docName).document(String.valueOf(item.getId())).set(newItem);
@@ -47,8 +48,8 @@ public class RequestDB extends DBWrapper{
     protected DBItem parseItem(Map<String, Object> item) {
         Request request = new Request();
         request.setEventID((String) item.get(EVENT_ID));
-        request.setByo((Byo) item.get(BYO));
-        request.setStatus((String) item.get(STATUS));
+        request.setByoID((String) item.get(BYO_ID));
+        request.setStatus(RequestStatus.valueOf((String)item.get(STATUS)));
 
         return request;
     }
