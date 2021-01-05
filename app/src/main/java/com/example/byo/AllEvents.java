@@ -11,6 +11,7 @@ import com.example.byo.DB.DBWrapper;
 import com.example.byo.DB.EventDB;
 import com.example.byo.Displays.EventDisplay;
 import com.example.byo.Types.Event;
+import com.example.byo.Types.Rate;
 
 import java.util.ArrayList;
 import java.util.List;

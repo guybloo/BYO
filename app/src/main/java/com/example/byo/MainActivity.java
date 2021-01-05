@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.byo.DB.ByoDB;
+import com.example.byo.DB.DBItem;
+import com.example.byo.DB.DBWrapper;
 import com.example.byo.DB.EventDB;
 import com.example.byo.DB.RateDB;
 import com.example.byo.Enums.ByoType;
@@ -19,6 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Date;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -43,5 +46,24 @@ public class MainActivity extends AppCompatActivity {
                 Navigation.openAllEvents(context);
             }
         });
+//        final ByoDB byoDB = new ByoDB();
+//        byoDB.getAllItems();
+//        byoDB.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
+//            @Override
+//            public void onGetAll() {
+//                for(DBItem item : byoDB.getItems().values()){
+//                    Random rand = new Random();
+//                    Rate rate = new Rate();
+//                    rate.setStars(rand.nextInt(5) + 1);
+//                    rate.setRatedID(item.getId());
+//                    (new RateDB()).updateItem(rate);
+//                }
+//            }
+//
+//            @Override
+//            public void onGetSpecific() {
+//
+//            }
+//        });
     }
 }
