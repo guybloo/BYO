@@ -39,6 +39,10 @@ public class CreateEvent extends AppCompatActivity {
 
         final Context context = this;
 
+        if(!getIntent().getBooleanExtra(CreateByo.EDIT,true))
+        {
+            hideEdit();
+        }
         items = new ArrayList<>();
         event = (Event) getIntent().getSerializableExtra(Event.SER_LABEL);
         if (event == null) {
@@ -141,6 +145,14 @@ public class CreateEvent extends AppCompatActivity {
 
     }
 
+    private void hideEdit(){
+        findViewById(R.id.create_event_description_text).setEnabled(false);
+        findViewById(R.id.create_event_title_text).setEnabled(false);
+        findViewById(R.id.create_event_date).setEnabled(false);
+        findViewById(R.id.create_event_add_byo).setVisibility(View.GONE);
+        findViewById(R.id.create_event_btns).setVisibility(View.GONE);
+
+    }
     @Override
     protected void onResume() {
         super.onResume();

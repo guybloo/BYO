@@ -33,15 +33,21 @@ public class Navigation {
         context.startActivity(intent);
     }
 
- public static void openCreateEvent(Context context, Event event){
+ public static void openCreateEvent(Context context, Event event, boolean edit){
         Intent intent = new Intent(context, CreateEvent.class);
         intent.putExtra(Event.SER_LABEL, event);
+        intent.putExtra(CreateByo.EDIT, edit);
         context.startActivity(intent);
     }
 
     public static void openByoChoose(Context context, Event eventId){
         Intent intent = new Intent(context, ByoChoose.class);
         intent.putExtra(ByoChoose.EVENT, eventId);
+        context.startActivity(intent);
+    }
+
+    public static void openAllEvents(Context context){
+        Intent intent = new Intent(context, AllEvents.class);
         context.startActivity(intent);
     }
 }

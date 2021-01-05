@@ -37,5 +37,11 @@ public class MainActivity extends AppCompatActivity {
                 Navigation.openRegistration(context);
             }
         });
+        findViewById(R.id.main_events).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.openAllEvents(context);
+            }
+        });
     }
 }

@@ -51,17 +51,13 @@
             android:inputType="textMultiLine"
             android:scrollbars="vertical"/>
         <!-- move button to bottom  -->
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="הוספת ברינג"
             android:id="@+id/create_event_add_byo"/>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"/>
+
     </LinearLayout>
     <ScrollView
         android:layout_width="match_parent"

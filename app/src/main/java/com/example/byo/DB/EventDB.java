@@ -45,6 +45,7 @@ public class EventDB extends DBWrapper {
         Event item = (Event) addItem;
         Map<String, Object> newItem = new HashMap<>();
 
+        newItem.put(ID, item.getId());
         newItem.put(NUM_ID, item.getNumID());
         newItem.put(DESCRIPTION, item.getDescription());
         newItem.put(TITLE, item.getTitle());

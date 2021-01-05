@@ -24,13 +24,13 @@ import java.util.List;
  */
 public class EventDisplay extends GenericDisplay{
 
-    public EventDisplay(Event event, final Context context, LinearLayout layout){
+    public EventDisplay(Event event, final Context context, LinearLayout layout, final boolean edit){
         super(event,context, R.layout.event_display, layout);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.openCreateEvent(context, (Event) item);
+                Navigation.openCreateEvent(context, (Event) item, edit);
             }
         });
     }
@@ -41,6 +41,5 @@ public class EventDisplay extends GenericDisplay{
         ((TextView)view.findViewById(R.id.event_display_title)).setText(((Event)item).getTitle());
         ((TextView)view.findViewById(R.id.event_display_date)).setText(CreateEvent.formatDate(((Event)item).getDateTime()));
     }
-
 
 }

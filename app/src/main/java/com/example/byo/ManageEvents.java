@@ -38,7 +38,7 @@ public class ManageEvents extends AppCompatActivity {
         findViewById(R.id.btn_add_event).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.openCreateEvent(context, null);
+                Navigation.openCreateEvent(context, null,true);
             }
         });
     }
@@ -67,7 +67,7 @@ public class ManageEvents extends AppCompatActivity {
         layout.removeAllViews();
 
         for (Event item : items) {
-            EventDisplay display = new EventDisplay(item, this, layout);
+            EventDisplay display = new EventDisplay(item, this, layout, true);
             display.addView(layout);
         }
     }
