@@ -1,0 +1,253 @@
+
+
+body{
+  overflow-x: hidden;
+font-family: 'Montserrat', sans-serif;
+text-align: center;
+
+}
+h1, h2, h3, h4, h5, h6{
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.5;
+  color: black;
+}
+
+
+/* Navigation Bar */
+/* Navigation Bar */
+.navbar{
+  color: #3f434a;
+  z-index: 1;
+}
+.nav-item{
+  padding: 0 15px;
+}
+.navbar-brand{
+  font-family: 'Ubuntu';
+  font-size: 1.5rem;
+}
+/* Title Section */
+/* Title Section */
+
+#title{
+  background-color: #3f434a;
+  color: #000;
+  text-align: center;
+}
+.titlecontent{
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+.container-fluid{
+  background-color: #fff;
+  padding: 0px 0px;
+}
+.main-title{
+  font-weight: 700;
+  position: relative;
+  z-index: 2;
+  top: 100px;
+}
+
+.mainvideo{
+  position: relative;
+  bottom: 130px;
+  opacity: 0.7;
+}
+
+.downloadbut{
+  margin: 10px 5px 0 5px;
+}
+.title-image{
+  width: 30%;
+  transform: rotate(25deg);
+  margin-left: 80px;
+  position: static;
+  z-index: -1;
+  padding-top: 10px;
+}
+
+
+
+/* Features Section */
+/* Features Section */
+#features{
+  background-color: white;
+  color: #fff;
+  position: relative;
+}
+  i{
+    font-size: 3rem;
+    color: #1e2736;
+}
+  i:hover{
+  color: #66696e;
+}
+
+.featuretitle{
+  color: #8f8f8f;
+  padding: 0 120px;
+  font-weight: 400;
+}
+
+.feat{
+  padding: 0 0 30px 0;
+}
+
+/* Testimonial Section
+Testimonial Section */
+
+#testimonials{
+  background-color: #3f434a;
+  color: #fff;
+}
+
+
+.testimonial-image{
+  border-radius: 100%;
+  width: 20%;
+  margin: 20px;
+}
+
+.yoav{
+  width: 10%;
+}
+
+
+#press{
+  background-color: #3f434a;
+  padding-bottom: 15px;
+}
+
+.press-logo{
+    width: 15%;
+    padding: 10px 15px;
+}
+
+.test-title{
+  font-weight: 700;
+  font-size: auto;
+  line-height: 1.5;
+padding: 5px 30px 10px 30px;
+padding: 7% 15%;
+color: white;
+}
+
+/* Press section */
+/* Press section */
+.canon{
+  border-radius: 30%;
+}
+.nikon{
+  border-radius: 30%;
+  width: 13%;
+}
+.bh{
+  border-radius: 15%;
+  width: 13%;
+}
+.shutter{
+  border-radius: 40%;
+  width: 10%;
+}
+
+/* Pricing Section
+Pricing Section */
+
+#pricing{
+  padding: 10px 150px 10px 100px;
+  margin-bottom: 100px;
+}
+.signcheck{
+  font-size: 1.5rem;
+  padding-right: 5px;
+}
+.freebutton{
+  border: 1px solid #8f8f8f;
+}
+
+.pricetitle{
+  padding: 15px 0px;
+  font-weight: 700;
+}
+.twobut{
+  margin-top: 45px;
+}
+.simple{
+  padding-bottom: 15px;
+}
+.price-text{
+  font-weight: 700;
+  font-size: auto;
+  line-height: 1.5;
+padding: 5px 30px 10px 30px;
+padding: 7% 15%;
+}
+.plan-type{
+  color: black;
+  padding: 10px 0 10px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.firstStep{
+  width: 75%;
+  margin-left: 12.5%;
+  margin-bottom: 5%;
+}
+/* Footer Section */
+/* Footer Section */
+
+#cta{
+  background-color: #3f434a;
+  color: white;
+  padding: 80px 0px;
+}
+
+.find{
+  color: white;
+  font-size: 2rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+
+.copyright{
+  padding-top: 150px;
+  font-size: 1rem;
+}
+.butbottom{
+  margin-top: 80px;
+}
+.icon{
+  margin: 50px 10px;
+}
+.icon:hover{
+  color: white;
+}
+
+/* Responsive Section */
+/* Responsive Section */
+
+
+@media (max-width: 1000px) {
+  .title-image{
+    transform: rotate(0deg);
+    position: relative;
+    margin: auto;
+    z-index: 1;
+  }
+  /* .plan-type{
+    font-size: 0.2rem;
+  } */
+  .firstStep{
+    width: 90%;
+  }
+
+  #title{
+    text-align: center;
+}
+.copyright{
+  font-size: 1rem;
+  padding-top: 0px;
+}
+
+}
