@@ -38,7 +38,6 @@ public class CreateEvent extends AppCompatActivity {
         setContentView(R.layout.activity_create_event);
 
         final Context context = this;
-
         if(!getIntent().getBooleanExtra(CreateByo.EDIT,true))
         {
             hideEdit();
@@ -48,6 +47,8 @@ public class CreateEvent extends AppCompatActivity {
         if (event == null) {
             event = new Event();
             event.setOwnerID(CurrentUser.getEmail());
+            tempDate = new Date(System.currentTimeMillis());
+
         } else {
             loadEvent();
             tempDate = event.getDateTime();
