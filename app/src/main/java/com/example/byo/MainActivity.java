@@ -30,10 +30,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Context context = this;
 
-//        Rate r = new Rate("0","guy@b.com_1609714064525",5,"");
-//        Rate rr = new Rate("0","guy@b.com_1609714064525",3,"");
-//        (new RateDB()).updateItem(r);
-//        (new RateDB()).updateItem(rr);
         findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,24 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 Navigation.openAllEvents(context);
             }
         });
-//        final ByoDB byoDB = new ByoDB();
-//        byoDB.getAllItems();
-//        byoDB.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
-//            @Override
-//            public void onGetAll() {
-//                for(DBItem item : byoDB.getItems().values()){
-//                    Random rand = new Random();
-//                    Rate rate = new Rate();
-//                    rate.setStars(rand.nextInt(5) + 1);
-//                    rate.setRatedID(item.getId());
-//                    (new RateDB()).updateItem(rate);
-//                }
-//            }
-//
-//            @Override
-//            public void onGetSpecific() {
-//
-//            }
-//        });
+
     }
 }
