@@ -6,35 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".Registration">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        >
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="email:"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="אימייל:"
         android:id="@+id/email_title"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/email_title"
         android:id="@+id/email_text"
         android:inputType="textEmailAddress"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="password:"
-        app:layout_constraintTop_toBottomOf="@id/email_text"
+        android:text="סיסמה:"
         android:id="@+id/pass_title"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/pass_title"
         android:id="@+id/pass_text"
         android:inputType="textPassword"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enter"
-        android:id="@+id/btn_enter"
-        app:layout_constraintTop_toBottomOf="@id/pass_text"/>
+        android:id="@+id/btn_enter"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

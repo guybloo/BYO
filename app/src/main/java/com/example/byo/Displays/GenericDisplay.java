@@ -35,7 +35,7 @@ public class GenericDisplay {
         params = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         view = ((Activity)context).getLayoutInflater().inflate(displayID, layout,false);
-        setParams(0,20);
+        setParams(0,30);
         updateUI();
     }
 

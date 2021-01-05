@@ -102,8 +102,7 @@ public class CreateByo extends AppCompatActivity {
         byo = (Byo) getIntent().getSerializableExtra(Byo.SER_LABEL);
         if (byo == null) {
             byo = new Byo();
-            //TODO uncomment
-//            byo.setUserID(CurrentUser.getEmail());
+            byo.setUserID(CurrentUser.getEmail());
         } else {
             loadByoDetails();
         }

@@ -73,7 +73,7 @@
         android:id="@+id/create_event_byo_list"/>
     </ScrollView>
     <LinearLayout android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/create_event_sign"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/create_event_btns">
@@ -89,5 +89,12 @@
             android:layout_height="wrap_content"
             android:text="מחיקה" />
     </LinearLayout>
+    <Button
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        android:id="@+id/create_event_sign"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="תרשמו אותי!"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

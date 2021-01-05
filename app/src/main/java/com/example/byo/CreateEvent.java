@@ -152,6 +152,7 @@ public class CreateEvent extends AppCompatActivity {
         findViewById(R.id.create_event_date).setEnabled(false);
         findViewById(R.id.create_event_add_byo).setVisibility(View.GONE);
         findViewById(R.id.create_event_btns).setVisibility(View.GONE);
+        findViewById(R.id.create_event_sign).setVisibility(View.VISIBLE);
 
     }
     @Override
