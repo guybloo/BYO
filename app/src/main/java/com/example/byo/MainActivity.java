@@ -9,10 +9,12 @@ import android.view.View;
 
 import com.example.byo.DB.ByoDB;
 import com.example.byo.DB.EventDB;
+import com.example.byo.DB.RateDB;
 import com.example.byo.Enums.ByoType;
 import com.example.byo.Types.Byo;
 import com.example.byo.Types.CurrentUser;
 import com.example.byo.Types.Event;
+import com.example.byo.Types.Rate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,6 +27,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final Context context = this;
 
+//        Rate r = new Rate("0","guy@b.com_1609714064525",5,"");
+//        Rate rr = new Rate("0","guy@b.com_1609714064525",3,"");
+//        (new RateDB()).updateItem(r);
+//        (new RateDB()).updateItem(rr);
         findViewById(R.id.registration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

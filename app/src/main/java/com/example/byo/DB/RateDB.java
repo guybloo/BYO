@@ -54,7 +54,7 @@ public class RateDB extends DBWrapper {
         Rate rate = new Rate();
         rate.setPhoneID((String) item.get(PHONE_ID));
         rate.setRatedID((String) item.get(RATED_ID));
-        rate.setStars((int) item.get(STARS));
+        rate.setStars(Integer.parseInt(item.get(STARS).toString()));
         rate.setDescription((String) item.get(DESCRIPTION));
         return rate;
     }

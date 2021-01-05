@@ -8,18 +8,22 @@
 <ImageView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:src="@raw/image1"
+    android:src="@raw/image3"
     android:scaleType="centerCrop"
-    android:alpha="0.4"/>
+    android:alpha="0.8"
+    android:layout_margin="0dp"/>
 
     <net.steamcrafted.materialiconlib.MaterialIconView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/registration"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:materialIconSize="100dp"
-        app:materialIcon="human"/>
+        app:materialIconSize="50dp"
+        app:materialIcon="login"
+        app:materialIconColor="@color/colorPrimary"
+        android:layout_margin="10dp"
+        />
 
     <Button
         app:layout_constraintBottom_toBottomOf="parent"

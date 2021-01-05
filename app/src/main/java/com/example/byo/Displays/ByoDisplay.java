@@ -4,8 +4,12 @@ import android.content.Context;
 import android.view.View;
 
 import android.widget.LinearLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.example.byo.DB.DBItem;
+import com.example.byo.DB.DBWrapper;
+import com.example.byo.DB.RateDB;
 import com.example.byo.Enums.Activities;
 import com.example.byo.Enums.ByoType;
 import com.example.byo.Enums.Services;
@@ -13,6 +17,7 @@ import com.example.byo.Enums.Venues;
 import com.example.byo.Navigation;
 import com.example.byo.R;
 import com.example.byo.Types.Byo;
+import com.example.byo.Types.Rate;
 
 import net.steamcrafted.materialiconlib.MaterialDrawableBuilder;
 import net.steamcrafted.materialiconlib.MaterialIconView;
@@ -57,6 +62,8 @@ public class ByoDisplay extends GenericDisplay {
 
             }
         }
+        updateRate();
+
     }
 
     private MaterialDrawableBuilder.IconValue getTypeIcon(ByoType type) {
@@ -118,5 +125,27 @@ public class ByoDisplay extends GenericDisplay {
 
         }
         return MaterialDrawableBuilder.IconValue.HELP;
+    }
+
+    private void updateRate()
+    {
+        final RateDB rateDB = new RateDB();
+        rateDB.loadItemsByFieldFromDB(RateDB.RATED_ID, item.getId());
+        rateDB.setDataChangeListener(new DBWrapper.OnDataChangeListener() {
+            @Override
+            public void onGetAll() {
+            }
+
+            @Override
+            public void onGetSpecific() {
+                float sum = 0, num = 0;
+                for(DBItem it : rateDB.getItems().values()){
+                    num ++;
+                    sum += ((Rate)it).getStars();
+                }
+                ((RatingBar)view.findViewById(R.id.byo_display_rate)).setRating(sum / num);
+            }
+        });
+
     }
 }

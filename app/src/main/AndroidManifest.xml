@@ -17,7 +17,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventViewer"></activity>
+        <activity android:name=".EventViewer" />
         <activity android:name=".ByoChoose" />
         <activity android:name=".CreateEvent" />
         <activity android:name=".GuestMainPage" />
@@ -42,7 +42,6 @@
                 <data
                     android:host="app_host"
                     android:path="/path_example"
-                    android:query=""
                     android:scheme="app_scheme" />
             </intent-filter>
         </activity>
